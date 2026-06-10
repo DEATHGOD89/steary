@@ -1,0 +1,1701 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Steary - Premium Glassmorphic Streaming Platform</title>
+    <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='white' stroke-width='3.5' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M6 6l6 6-6 6'/%3E%3Cline x1='14' y1='18' x2='20' y2='18'/%3E%3C/svg%3E">
+    <meta name="description" content="Steary is a premium, high-fidelity streaming interface. Watch your favorite trailers, movies, series, and animations in dark glassmorphism.">
+    <meta name="robots" content="index, follow">
+    <link rel="canonical" href="https://steary.com/">
+
+    <!-- Content Security Policy (XSS & Resource Injection Protection) -->
+    <meta http-equiv="Content-Security-Policy" content="default-src 'self' file: https:; script-src 'self' 'unsafe-inline' file: https:; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com file:; font-src 'self' https://fonts.gstatic.com file:; img-src 'self' https://images.unsplash.com data: file: https:; frame-src 'self' https://www.youtube.com https://youtube.com https://resumesuit.netlify.app https://freshlinks.netlify.app https://aiinterviwer.netlify.app https://aiopenlibrary.netlify.app https://freevibecoder.netlify.app https://vibeart-gen.netlify.app https://deepcode-bot.netlify.app https://voicesync-ai.netlify.app https://insightflow-ai.netlify.app https://vibechat-ai.netlify.app file: https:; connect-src 'self' file: https:;">
+
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://steary.com/">
+    <meta property="og:title" content="Steary - Premium Glassmorphic Streaming Platform">
+    <meta property="og:description" content="Watch your favorite trailers, movies, series, and animations in dark glassmorphism.">
+    <meta property="og:image" content="https://steary.com/src/assets/steary_background.webp">
+
+    <!-- Twitter -->
+    <meta property="twitter:card" content="summary_large_image">
+    <meta property="twitter:url" content="https://steary.com/">
+    <meta property="twitter:title" content="Steary - Premium Glassmorphic Streaming Platform">
+    <meta property="twitter:description" content="Watch your favorite trailers, movies, series, and animations in dark glassmorphism.">
+    <meta property="twitter:image" content="https://steary.com/src/assets/steary_background.webp">
+
+    <!-- Google Fonts Inter -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <!-- Preload background image for LCP improvement -->
+    <link rel="preload" as="image" href="src/assets/bg.webp" type="image/webp">
+    <!-- Main Stylesheet -->
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body class="light-mode">
+    <script>
+        (function() {
+            try {
+                const savedPrefs = localStorage.getItem('steary.profile.preferences');
+                if (savedPrefs) {
+                    const parsed = JSON.parse(savedPrefs);
+                    if (parsed.lightMode === false) {
+                        document.body.classList.remove('light-mode');
+                    }
+                }
+            } catch (e) {}
+        })();
+    </script>
+    <!-- Full-viewport blurred background image/video -->
+    <div class="app-bg-container">
+        <img class="app-bg-image" src="src/assets/bg.webp" alt="Website Background" loading="eager" decoding="async">
+        <div class="app-bg-overlay"></div>
+    </div>
+
+    <!-- Main App Layout Wrapper -->
+    <div class="app-layout-wrapper" id="viewport">
+        <!-- Hidden screen reader page header for SEO / accessibility crawler tools -->
+        <h1 class="sr-only" style="position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px; overflow: hidden; clip: rect(0, 0, 0, 0); border: 0;">Steary - Premium Glassmorphic Streaming Platform</h1>
+        <!-- Top Glass Container -->
+        <div class="app-container top-container glass-panel animate-scale-up">
+            
+            <!-- NAVBAR -->
+            <nav class="navbar glass-panel animate-fade-in">
+                <!-- Navbar background moving video wrapper -->
+                <div class="navbar-video-wrapper">
+                    <div class="navbar-video-bg-container">
+                        <video class="navbar-video-bg" data-src="./src/assets/navebar_background.mp4" loop muted playsinline></video>
+                    </div>
+                </div>
+
+
+                <!-- Mobile Menu Hamburger -->
+                <button class="mobile-hamburger" id="mobileHamburger" aria-label="Open Navigation Menu">
+                    <svg viewBox="0 0 24 24" width="24" height="24" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round"><line x1="3" y1="12" x2="21" y2="12"></line><line x1="3" y1="6" x2="21" y2="6"></line><line x1="3" y1="18" x2="21" y2="18"></line></svg>
+                </button>
+
+                <!-- Left: Logo & Panel Toggle -->
+                <div class="navbar-left">
+                    <div class="navbar-brand">
+                        <svg class="logo-icon" viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false">
+                            <path class="logo-chevron" d="M6 6l6 6-6 6" />
+                            <line class="logo-cursor" x1="14" y1="18" x2="20" y2="18" />
+                        </svg>
+                        <span>Steary</span>
+                    </div>
+                    <button class="sidebar-toggle-btn" id="sidebarToggleBtn" aria-label="Toggle watchlist panel">
+                        <svg viewBox="0 0 24 24" width="20" height="20" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="2" ry="2"></rect><line x1="9" y1="3" x2="9" y2="21"></line></svg>
+                    </button>
+                </div>
+
+                <!-- Center: Navigation Tabs -->
+                <div class="navbar-center" id="navTabsContainer">
+                    <ul class="nav-tabs">
+                        <li><a href="#" class="nav-tab active" data-tab="home">Home</a></li>
+                        <li><a href="#" class="nav-tab" data-tab="dev-tools">Dev Tools</a></li>
+                        <li><a href="#" class="nav-tab" data-tab="ai-hub">AI Hub</a></li>
+                        <li><a href="#" class="nav-tab" data-tab="projects">Projects</a></li>
+                    </ul>
+                    <!-- Sliding Underline Element -->
+                    <div class="nav-underline" id="navUnderline"></div>
+                </div>
+
+                <!-- Right: Search, Notifications & Profile -->
+                <div class="navbar-right">
+                    <div class="search-box">
+                        <svg class="search-icon" viewBox="0 0 24 24" width="16" height="16" stroke="currentColor" stroke-width="2.5" fill="none" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line></svg>
+                        <input type="text" id="movieSearch" placeholder="Search movies..." autocomplete="off" aria-label="Search movies and series">
+                    </div>
+                    <!-- Theme Toggle Button -->
+                    <button class="theme-toggle-btn" id="themeToggleBtn" aria-label="Toggle light/dark theme">
+                        <!-- Sun Icon (visible in light mode) -->
+                        <svg class="sun-icon" viewBox="0 0 24 24" width="20" height="20" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="5"></circle><line x1="12" y1="1" x2="12" y2="3"></line><line x1="12" y1="21" x2="12" y2="23"></line><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line><line x1="1" y1="12" x2="3" y2="12"></line><line x1="21" y1="12" x2="23" y2="12"></line><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line></svg>
+                        <!-- Moon Icon (visible in dark mode) -->
+                        <svg class="moon-icon" viewBox="0 0 24 24" width="20" height="20" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path></svg>
+                    </button>
+                    <!-- Notification Bell -->
+                    <div class="notification-wrap">
+                        <button class="notification-btn" aria-label="Notifications" id="notificationBtn" aria-expanded="false">
+                            <svg viewBox="0 0 24 24" width="20" height="20" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round"><path d="M18 8A6 6 0 0 0 6 8c0 7-3 9-3 9h18s-3-2-3-9"></path><path d="M13.73 21a2 2 0 0 1-3.46 0"></path></svg>
+                            <span class="notification-badge" id="notificationBadge"></span>
+                        </button>
+                        <div class="notification-dropdown glass-panel" id="notificationDropdown">
+                            <div class="notification-dropdown-header">
+                                <div>
+                                    <strong>Notifications</strong>
+                                    <span>Live updates, auto-expire after 24 hours</span>
+                                </div>
+                                <button class="notification-clear-btn" id="clearNotificationsBtn" type="button">Clear</button>
+                            </div>
+                            <div class="notification-list" id="notificationList">
+                                <div class="notification-empty">No new updates yet.</div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Auth Section: Login/Signup or User Profile Card -->
+                    <div class="auth-section" id="authSection">
+                        <!-- Login / Sign Up Trigger -->
+                        <button class="btn btn-secondary auth-login-btn" id="authLoginBtn" type="button">
+                            <svg viewBox="0 0 24 24" width="16" height="16" stroke="currentColor" stroke-width="2.5" fill="none" stroke-linecap="round" stroke-linejoin="round" style="margin-right: 6px; vertical-align: middle;"><path d="M15 3h4a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2h-4"></path><polyline points="10 17 15 12 10 7"></polyline><line x1="15" y1="12" x2="3" y2="12"></line></svg>
+                            <span>Sign In</span>
+                        </button>
+
+                        <!-- User Profile Card -->
+                        <div class="user-profile hidden" id="userProfileToggle" role="button" tabindex="0" aria-label="User profile and settings">
+                            <div class="avatar-container">
+                                <img src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?q=80&w=100&auto=format&fit=crop" alt="Profile" class="profile-avatar-img" width="40" height="40" loading="lazy" decoding="async">
+                                <span class="status-dot online"></span>
+                            </div>
+                            
+                            <!-- Profile Dropdown Menu -->
+                            <div class="profile-dropdown glass-panel" id="profileDropdown">
+                                <a href="#" class="dropdown-item" data-profile-section="view">
+                                    <svg viewBox="0 0 24 24" width="16" height="16" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path><circle cx="12" cy="7" r="4"></circle></svg>
+                                    View Profile
+                                </a>
+                                <a href="#" class="dropdown-item" data-profile-section="settings">
+                                    <svg viewBox="0 0 24 24" width="16" height="16" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="3"></circle><path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1 0 2.83 2 2 0 0 1-2.83 0l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-2 2 2 2 0 0 1-2-2v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83 0 2 2 0 0 1 0-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1-2-2 2 2 0 0 1 2-2h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 0-2.83 2 2 0 0 1 2.83 0l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 2-2 2 2 0 0 1 2 2v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 0 2 2 0 0 1 0 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 2 2 2 2 0 0 1-2 2h-.09a1.65 1.65 0 0 0-1.51 1z"></path></svg>
+                                    Settings
+                                </a>
+                                <a href="#" class="dropdown-item" data-profile-section="account">
+                                    <svg viewBox="0 0 24 24" width="16" height="16" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path></svg>
+                                    Account
+                                </a>
+                                <a href="#" class="dropdown-item" data-profile-section="notifications">
+                                    <svg viewBox="0 0 24 24" width="16" height="16" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round"><path d="M18 8A6 6 0 0 0 6 8c0 7-3 9-3 9h18s-3-2-3-9"></path><path d="M13.73 21a2 2 0 0 1-3.46 0"></path></svg>
+                                    Notifications
+                                </a>
+                                <a href="contact.html" class="dropdown-item">
+                                    <svg viewBox="0 0 24 24" width="16" height="16" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"></path></svg>
+                                    Contact Us
+                                </a>
+                                <div class="dropdown-divider"></div>
+                                <a href="#" class="dropdown-item text-danger" data-action="logout">
+                                    <svg viewBox="0 0 24 24" width="16" height="16" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round"><path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4"></path><polyline points="16 17 21 12 16 7"></polyline><line x1="21" y1="12" x2="9" y2="12"></line></svg>
+                                    Logout
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </nav>
+
+            <!-- NEW SKILLS HERO SECTION -->
+            <section class="skills-hero-section glass-panel animate-scale-up" id="skillsHeroSection">
+                <div class="skills-hero-content">
+                    <div class="glitch-wrapper">
+                        <h1 class="glitch-title" data-text="STEARY">STEARY</h1>
+                    </div>
+                    <p class="skills-hero-tagline">&gt; High-fidelity portal for modern developer tools, AI sandboxes, and premium glassmorphic interfaces.</p>
+                    <div class="skills-hero-ctas">
+                        <a href="#recommendationsRow" class="btn btn-primary btn-cyber" id="heroCtaExplore">
+                            <span class="cyber-btn-text">Explore Projects</span>
+                            <span class="cyber-btn-arrow">&gt;&gt;</span>
+                        </a>
+                        <a href="#" class="btn btn-secondary btn-cyber-secondary" data-target-tab="dev-tools" id="heroCtaDevTools">
+                            <span>Dev Tools Hub</span>
+                        </a>
+                        <a href="download.html" class="btn btn-secondary btn-cyber-secondary" style="margin-left: 10px;">
+                            <svg viewBox="0 0 24 24" width="14" height="14" stroke="currentColor" stroke-width="2.5" fill="none" stroke-linecap="round" stroke-linejoin="round" style="margin-right: 6px; vertical-align: text-bottom;"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path><polyline points="7 10 12 15 17 10"></polyline><line x1="12" y1="15" x2="12" y2="3"></line></svg>
+                            <span>Download Now</span>
+                        </a>
+                    </div>
+                    
+                    <!-- AI AGENT ECOSYSTEM MARQUEE -->
+                    <div class="skills-marquee-container">
+                        <div class="skills-marquee-title">Available for these agents</div>
+                        <div class="skills-marquee-track">
+                            <div class="skills-marquee-group">
+                                <div class="skills-marquee-item" title="OpenAI">
+                                    <svg viewBox="0 0 24 24"><path d="M21.74 11.44a5.46 5.46 0 0 0-.17-3.15 5.51 5.51 0 0 0-2.28-2.87 5.4 5.4 0 0 0-3.7-.49 5.42 5.42 0 0 0-2.88-2.24 5.53 5.53 0 0 0-3.79.09 5.5 5.5 0 0 0-2.73 2.45 5.4 5.4 0 0 0-.8 3.65 5.42 5.42 0 0 0-2.24 2.88 5.53 5.53 0 0 0 .09 3.79 5.5 5.5 0 0 0 2.45 2.73 5.4 5.4 0 0 0 3.65.8 5.42 5.42 0 0 0 2.88 2.24 5.53 5.53 0 0 0 3.79-.09 5.5 5.5 0 0 0 2.73-2.45 5.4 5.4 0 0 0 .8-3.65 5.42 5.42 0 0 0 2.24-2.88 5.53 5.53 0 0 0-.09-3.79zM12 14.7a2.7 2.7 0 1 1 2.7-2.7 2.7 2.7 0 0 1-2.7 2.7zm-1.89-6.32a3.8 3.8 0 0 1 1.62-.36v3.83L8.4 9.94a3.8 3.8 0 0 1 .49-1.39 3.84 3.84 0 0 1 1.22-1.17zm-4.73 3.9a3.8 3.8 0 0 1-.09-1.66V6.79l3.32 1.91a3.8 3.8 0 0 1-.95 1.13 3.84 3.84 0 0 1-2.28.45zm1.53 4.93a3.8 3.8 0 0 1-1.53-1.13 3.84 3.84 0 0 1-.77-1.55l3.32-1.92v3.83a3.8 3.8 0 0 1-1.02.77zm5.2 1.39a3.8 3.8 0 0 1-1.62.36v-3.83l3.33 1.91a3.8 3.8 0 0 1-.49 1.39 3.84 3.84 0 0 1-1.22 1.17zm4.73-3.9a3.8 3.8 0 0 1 .09 1.66v3.83l-3.32-1.91a3.8 3.8 0 0 1 .95-1.13 3.84 3.84 0 0 1 2.28-.45zm-1.53-4.93a3.8 3.8 0 0 1 1.53 1.13 3.84 3.84 0 0 1 .77 1.55l-3.32 1.92V6.08a3.8 3.8 0 0 1 1.02-.77z"/></svg>
+                                </div>
+                                <div class="skills-marquee-item" title="Claude">
+                                    <svg viewBox="0 0 24 24"><path d="M12 1L3 6v12l9 5 9-5V6L12 1zm0 2.2l6.8 3.8L12 10.8 5.2 7 12 3.2zM5 8.8l6 3.3v6.7l-6-3.3V8.8zm8 10v-6.7l6-3.3v6.7l-6 3.3z"/></svg>
+                                </div>
+                                <div class="skills-marquee-item" title="Gemini">
+                                    <svg viewBox="0 0 24 24"><path d="M12 0c.1 6.6 5.4 11.9 12 12-6.6.1-11.9 5.4-12 12-.1-6.6-5.4-11.9-12-12 6.6-.1 11.9-5.4 12-12z"/></svg>
+                                </div>
+                                <div class="skills-marquee-item" title="DeepSeek">
+                                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M12 6a6 6 0 1 1 0 12v-6" fill="currentColor"/></svg>
+                                </div>
+                                <div class="skills-marquee-item" title="Grok">
+                                    <svg viewBox="0 0 24 24"><path d="M19.17 3H21L5 21H3.17L19.17 3z"/><path d="M9 3H5l10 18h4L9 3z" opacity="0.3"/></svg>
+                                </div>
+                                <div class="skills-marquee-item" title="Perplexity">
+                                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><line x1="12" y1="3" x2="12" y2="21"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="5.64" y1="5.64" x2="18.36" y2="18.36"/><line x1="5.64" y1="18.36" x2="18.36" y2="5.64"/></svg>
+                                </div>
+                                <div class="skills-marquee-item" title="Cursor">
+                                    <svg viewBox="0 0 24 24"><path d="M5.5 2v15.27l4.37-4.37 3.32 7.1 2.68-1.25-3.32-7.1h6.2L5.5 2z"/></svg>
+                                </div>
+                                <div class="skills-marquee-item" title="Copilot">
+                                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2a9 9 0 0 0-9 9v2a4 4 0 0 0 4 4h10a4 4 0 0 0 4-4v-2a9 9 0 0 0-9-9z"/><rect x="6" y="10" width="12" height="4" rx="2" fill="currentColor"/><circle cx="9" y="12" r="1" fill="#000000"/><circle cx="15" y="12" r="1" fill="#000000"/><path d="M12 6v2M9 4h6"/></svg>
+                                </div>
+                                <div class="skills-marquee-item" title="Windsurf">
+                                    <svg viewBox="0 0 24 24"><path d="M20.9 9.5c-2.4.1-4.7 2.1-6.2 4.4-1.5 2.3-2.8 4.6-5 4.6-1.5 0-2.4-.8-3.4-2.4C5 14 3.7 9.7 2.5 9.7c-.8 0-1.5.7-1.5 1.5 0 2.2 2 6.8 5 6.8 2.2 0 3.7-2.3 5.1-4.6 1.4-2.3 2.7-4.4 4.8-4.4 1.2 0 2 .8 3 2.4.9 1.5 2.1 4.4 3.5 4.4.8 0 1.5-.7 1.5-1.5 0-2.2-2.1-4.8-3-4.8z"/></svg>
+                                </div>
+                                <div class="skills-marquee-item" title="Qwen">
+                                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="11" cy="11" r="7"/><path d="M16 16c1 1 3 3 5 3"/><circle cx="11" cy="11" r="3" fill="currentColor"/></svg>
+                                </div>
+                                <div class="skills-marquee-item" title="Kilo Code">
+                                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 3v18M6 12h5l6-9M11 12l7 9"/></svg>
+                                </div>
+                                <div class="skills-marquee-item" title="Continue">
+                                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><polygon points="10 8 16 12 10 16 10 8" fill="currentColor"/></svg>
+                                </div>
+                                <div class="skills-marquee-item" title="Roo Code">
+                                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 20V4h7a4 4 0 0 1 4 4 4 4 0 0 1-4 4H4M11 12l6 8"/><circle cx="12" cy="8" r="2" fill="currentColor"/></svg>
+                                </div>
+                                <div class="skills-marquee-item" title="Cline">
+                                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M16 6a6 6 0 1 0 0 12"/><line x1="10" y1="12" x2="20" y2="12"/></svg>
+                                </div>
+                                <div class="skills-marquee-item" title="Bolt">
+                                    <svg viewBox="0 0 24 24"><path d="M13 2L3 14h9v8l10-12h-9z"/></svg>
+                                </div>
+                                <div class="skills-marquee-item" title="Lovable">
+                                    <svg viewBox="0 0 24 24"><path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/></svg>
+                                </div>
+                            </div>
+                            <!-- Duplicate group for seamless infinite loop -->
+                            <div class="skills-marquee-group" aria-hidden="true">
+                                <div class="skills-marquee-item" title="OpenAI">
+                                    <svg viewBox="0 0 24 24"><path d="M21.74 11.44a5.46 5.46 0 0 0-.17-3.15 5.51 5.51 0 0 0-2.28-2.87 5.4 5.4 0 0 0-3.7-.49 5.42 5.42 0 0 0-2.88-2.24 5.53 5.53 0 0 0-3.79.09 5.5 5.5 0 0 0-2.73 2.45 5.4 5.4 0 0 0-.8 3.65 5.42 5.42 0 0 0-2.24 2.88 5.53 5.53 0 0 0 .09 3.79 5.5 5.5 0 0 0 2.45 2.73 5.4 5.4 0 0 0 3.65.8 5.42 5.42 0 0 0 2.88 2.24 5.53 5.53 0 0 0 3.79-.09 5.5 5.5 0 0 0 2.73-2.45 5.4 5.4 0 0 0 .8-3.65 5.42 5.42 0 0 0 2.24-2.88 5.53 5.53 0 0 0-.09-3.79zM12 14.7a2.7 2.7 0 1 1 2.7-2.7 2.7 2.7 0 0 1-2.7 2.7zm-1.89-6.32a3.8 3.8 0 0 1 1.62-.36v3.83L8.4 9.94a3.8 3.8 0 0 1 .49-1.39 3.84 3.84 0 0 1 1.22-1.17zm-4.73 3.9a3.8 3.8 0 0 1-.09-1.66V6.79l3.32 1.91a3.8 3.8 0 0 1-.95 1.13 3.84 3.84 0 0 1-2.28.45zm1.53 4.93a3.8 3.8 0 0 1-1.53-1.13 3.84 3.84 0 0 1-.77-1.55l3.32-1.92v3.83a3.8 3.8 0 0 1-1.02.77zm5.2 1.39a3.8 3.8 0 0 1-1.62.36v-3.83l3.33 1.91a3.8 3.8 0 0 1-.49 1.39 3.84 3.84 0 0 1-1.22 1.17zm4.73-3.9a3.8 3.8 0 0 1 .09 1.66v3.83l-3.32-1.91a3.8 3.8 0 0 1 .95-1.13 3.84 3.84 0 0 1 2.28-.45zm-1.53-4.93a3.8 3.8 0 0 1 1.53 1.13 3.84 3.84 0 0 1 .77 1.55l-3.32 1.92V6.08a3.8 3.8 0 0 1 1.02-.77z"/></svg>
+                                </div>
+                                <div class="skills-marquee-item" title="Claude">
+                                    <svg viewBox="0 0 24 24"><path d="M12 1L3 6v12l9 5 9-5V6L12 1zm0 2.2l6.8 3.8L12 10.8 5.2 7 12 3.2zM5 8.8l6 3.3v6.7l-6-3.3V8.8zm8 10v-6.7l6-3.3v6.7l-6 3.3z"/></svg>
+                                </div>
+                                <div class="skills-marquee-item" title="Gemini">
+                                    <svg viewBox="0 0 24 24"><path d="M12 0c.1 6.6 5.4 11.9 12 12-6.6.1-11.9 5.4-12 12-.1-6.6-5.4-11.9-12-12 6.6-.1 11.9-5.4 12-12z"/></svg>
+                                </div>
+                                <div class="skills-marquee-item" title="DeepSeek">
+                                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M12 6a6 6 0 1 1 0 12v-6" fill="currentColor"/></svg>
+                                </div>
+                                <div class="skills-marquee-item" title="Grok">
+                                    <svg viewBox="0 0 24 24"><path d="M19.17 3H21L5 21H3.17L19.17 3z"/><path d="M9 3H5l10 18h4L9 3z" opacity="0.3"/></svg>
+                                </div>
+                                <div class="skills-marquee-item" title="Perplexity">
+                                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><line x1="12" y1="3" x2="12" y2="21"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="5.64" y1="5.64" x2="18.36" y2="18.36"/><line x1="5.64" y1="18.36" x2="18.36" y2="5.64"/></svg>
+                                </div>
+                                <div class="skills-marquee-item" title="Cursor">
+                                    <svg viewBox="0 0 24 24"><path d="M5.5 2v15.27l4.37-4.37 3.32 7.1 2.68-1.25-3.32-7.1h6.2L5.5 2z"/></svg>
+                                </div>
+                                <div class="skills-marquee-item" title="Copilot">
+                                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2a9 9 0 0 0-9 9v2a4 4 0 0 0 4 4h10a4 4 0 0 0 4-4v-2a9 9 0 0 0-9-9z"/><rect x="6" y="10" width="12" height="4" rx="2" fill="currentColor"/><circle cx="9" y="12" r="1" fill="#000000"/><circle cx="15" y="12" r="1" fill="#000000"/><path d="M12 6v2M9 4h6"/></svg>
+                                </div>
+                                <div class="skills-marquee-item" title="Windsurf">
+                                    <svg viewBox="0 0 24 24"><path d="M20.9 9.5c-2.4.1-4.7 2.1-6.2 4.4-1.5 2.3-2.8 4.6-5 4.6-1.5 0-2.4-.8-3.4-2.4C5 14 3.7 9.7 2.5 9.7c-.8 0-1.5.7-1.5 1.5 0 2.2 2 6.8 5 6.8 2.2 0 3.7-2.3 5.1-4.6 1.4-2.3 2.7-4.4 4.8-4.4 1.2 0 2 .8 3 2.4.9 1.5 2.1 4.4 3.5 4.4.8 0 1.5-.7 1.5-1.5 0-2.2-2.1-4.8-3-4.8z"/></svg>
+                                </div>
+                                <div class="skills-marquee-item" title="Qwen">
+                                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="11" cy="11" r="7"/><path d="M16 16c1 1 3 3 5 3"/><circle cx="11" cy="11" r="3" fill="currentColor"/></svg>
+                                </div>
+                                <div class="skills-marquee-item" title="Kilo Code">
+                                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 3v18M6 12h5l6-9M11 12l7 9"/></svg>
+                                </div>
+                                <div class="skills-marquee-item" title="Continue">
+                                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><polygon points="10 8 16 12 10 16 10 8" fill="currentColor"/></svg>
+                                </div>
+                                <div class="skills-marquee-item" title="Roo Code">
+                                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 20V4h7a4 4 0 0 1 4 4 4 4 0 0 1-4 4H4M11 12l6 8"/><circle cx="12" cy="8" r="2" fill="currentColor"/></svg>
+                                </div>
+                                <div class="skills-marquee-item" title="Cline">
+                                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M16 6a6 6 0 1 0 0 12"/><line x1="10" y1="12" x2="20" y2="12"/></svg>
+                                </div>
+                                <div class="skills-marquee-item" title="Bolt">
+                                    <svg viewBox="0 0 24 24"><path d="M13 2L3 14h9v8l10-12h-9z"/></svg>
+                                </div>
+                                <div class="skills-marquee-item" title="Lovable">
+                                    <svg viewBox="0 0 24 24"><path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/></svg>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- Animated Video Showcase -->
+                <div class="skills-hero-video-wrapper">
+                    <video loop muted playsinline class="skills-hero-video" data-src="src/assets/heroani.mp4"></video>
+                </div>
+
+                <!-- Subtle Cyber Background Grid/Glow Effect -->
+                <div class="skills-hero-glow"></div>
+            </section>
+
+            <!-- MAIN GRID CONTENT (3-Columns) -->
+            <div class="main-content-grid" id="mainContentGrid">
+                <!-- Hidden dummy wrapper to satisfy DOM cache and sidebar toggle listener in app.js -->
+                <div id="leftPanelStack" style="display: none;"></div>
+
+                <!-- 1. TRENDING NOW CARD -->
+                <section class="panel-section glass-panel trailers-section animate-fade-in">
+                    <div class="section-header">
+                        <div class="header-title">
+                            <svg class="section-header-icon" viewBox="0 0 24 24" width="16" height="16" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round"><path d="M8.5 14.5A2.5 2.5 0 0 0 11 12c0-1.38-.5-2-1-3-1.072-2.143-.224-4.054 2-6 .5 2.5 2 4.9 4 6.5 2 1.6 3 3.5 3 5.5a7 7 0 1 1-14 0c0-1.153.433-2.294 1-3a2.5 2.5 0 0 0 2.5 2.5z"/></svg>
+                            <h2>Trending Now</h2>
+                        </div>
+                    </div>
+
+                    <div class="trailers-list" id="trendingList">
+                        <!-- Dynamic content populated by app.js -->
+                    </div>
+                </section>
+
+                <!-- 2. BEST TOOLS CARD -->
+                <section class="panel-section glass-panel best-tools-section animate-fade-in">
+                    <div class="section-header">
+                        <div class="header-title">
+                            <svg class="section-header-icon" viewBox="0 0 24 24" width="16" height="16" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round"><path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z"/></svg>
+                            <h2>Best Tools</h2>
+                        </div>
+                        <a href="#" class="view-all-header-link" data-target-tab="dev-tools">View All</a>
+                    </div>
+                    <div class="best-tools-list" id="bestToolsList">
+                        <a href="https://github.com" target="_blank" rel="noopener" class="best-tool-card">
+                            <div class="best-tool-icon"><svg viewBox="0 0 24 24" width="18" height="18" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"/></svg></div>
+                            <div class="best-tool-info"><span class="best-tool-name">GitHub</span><span class="best-tool-desc">Code hosting &amp; collaboration</span></div>
+                        </a>
+                        <a href="https://code.visualstudio.com" target="_blank" rel="noopener" class="best-tool-card">
+                            <div class="best-tool-icon"><svg viewBox="0 0 24 24" width="18" height="18" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></svg></div>
+                            <div class="best-tool-info"><span class="best-tool-name">VS Code</span><span class="best-tool-desc">Powerful code editor</span></div>
+                        </a>
+                        <a href="https://figma.com" target="_blank" rel="noopener" class="best-tool-card">
+                            <div class="best-tool-icon"><svg viewBox="0 0 24 24" width="18" height="18" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round"><path d="M5 5.5A3.5 3.5 0 0 1 8.5 2H12v7H8.5A3.5 3.5 0 0 1 5 5.5z"/><path d="M12 2h3.5a3.5 3.5 0 1 1 0 7H12V2z"/><path d="M12 12.5a3.5 3.5 0 1 1 7 0 3.5 3.5 0 1 1-7 0z"/><path d="M5 19.5A3.5 3.5 0 0 1 8.5 16H12v3.5a3.5 3.5 0 1 1-7 0z"/><path d="M5 12.5A3.5 3.5 0 0 1 8.5 9H12v7H8.5A3.5 3.5 0 0 1 5 12.5z"/></svg></div>
+                            <div class="best-tool-info"><span class="best-tool-name">Figma</span><span class="best-tool-desc">UI/UX design platform</span></div>
+                        </a>
+                        <a href="https://vercel.com" target="_blank" rel="noopener" class="best-tool-card">
+                            <div class="best-tool-icon"><svg viewBox="0 0 24 24" width="18" height="18" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round"><polygon points="12 2 22 20 2 20"/></svg></div>
+                            <div class="best-tool-info"><span class="best-tool-name">Vercel</span><span class="best-tool-desc">Frontend cloud platform</span></div>
+                        </a>
+                        <a href="https://netlify.com" target="_blank" rel="noopener" class="best-tool-card">
+                            <div class="best-tool-icon"><svg viewBox="0 0 24 24" width="18" height="18" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round"><path d="M18 10h-1.26A8 8 0 1 0 9 20h9a5 5 0 0 0 0-10z"/></svg></div>
+                            <div class="best-tool-info"><span class="best-tool-name">Netlify</span><span class="best-tool-desc">Web app deployment</span></div>
+                        </a>
+                        <a href="https://supabase.com" target="_blank" rel="noopener" class="best-tool-card">
+                            <div class="best-tool-icon"><svg viewBox="0 0 24 24" width="18" height="18" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round"><ellipse cx="12" cy="5" rx="9" ry="3"/><path d="M21 12c0 1.66-4 3-9 3s-9-1.34-9-3"/><path d="M3 5v14c0 1.66 4 3 9 3s9-1.34 9-3V5"/></svg></div>
+                            <div class="best-tool-info"><span class="best-tool-name">Supabase</span><span class="best-tool-desc">Open source Firebase alt</span></div>
+                        </a>
+                        <a href="https://www.docker.com" target="_blank" rel="noopener" class="best-tool-card">
+                            <div class="best-tool-icon"><svg viewBox="0 0 24 24" width="18" height="18" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="10" width="6" height="4" rx="1"/><rect x="9" y="10" width="6" height="4" rx="1"/><rect x="16" y="10" width="6" height="4" rx="1"/><rect x="9" y="5" width="6" height="4" rx="1"/></svg></div>
+                            <div class="best-tool-info"><span class="best-tool-name">Docker</span><span class="best-tool-desc">Containerization platform</span></div>
+                        </a>
+                    </div>
+                </section>
+
+                <!-- 3. AI HUB CARD -->
+                <section class="panel-section glass-panel ai-hub-hero-section animate-fade-in">
+                    <div class="section-header">
+                        <div class="header-title">
+                            <svg class="section-header-icon" viewBox="0 0 24 24" width="16" height="16" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2c0 5.523 4.477 10 10 10-5.523 0-10 4.477-10 10-0-5.523-4.477-10-10-10 5.523 0 10-4.477 10-10z"/></svg>
+                            <h2>AI Hub</h2>
+                        </div>
+                        <a href="#" class="view-all-header-link" data-target-tab="ai-hub">View All</a>
+                    </div>
+                    <div class="best-tools-list" id="aiHubHeroList">
+                        <a href="https://openai.com" target="_blank" rel="noopener" class="best-tool-card">
+                            <div class="best-tool-icon">
+                                <img src="src/assets/ai%20logo/open%20ai%20logo.jpg" alt="OpenAI" width="28" height="28" loading="lazy" decoding="async">
+                            </div>
+                            <div class="best-tool-info">
+                                <span class="best-tool-name">OpenAI</span>
+                                <span class="best-tool-desc">AI research &amp; language models</span>
+                            </div>
+                        </a>
+                        <a href="https://claude.ai" target="_blank" rel="noopener" class="best-tool-card">
+                            <div class="best-tool-icon">
+                                <img src="src/assets/ai%20logo/claude%20logo.jpg" alt="Claude" width="28" height="28" loading="lazy" decoding="async">
+                            </div>
+                            <div class="best-tool-info">
+                                <span class="best-tool-name">Claude</span>
+                                <span class="best-tool-desc">Advanced reasoning model</span>
+                            </div>
+                        </a>
+                        <a href="https://gemini.google.com" target="_blank" rel="noopener" class="best-tool-card">
+                            <div class="best-tool-icon">
+                                <img src="src/assets/ai%20logo/gemini%20logo.jpg" alt="Gemini" width="28" height="28" loading="lazy" decoding="async">
+                            </div>
+                            <div class="best-tool-info">
+                                <span class="best-tool-name">Gemini</span>
+                                <span class="best-tool-desc">Google's multimodal AI</span>
+                            </div>
+                        </a>
+                        <a href="https://deepseek.com" target="_blank" rel="noopener" class="best-tool-card">
+                            <div class="best-tool-icon">
+                                <img src="src/assets/ai%20logo/deepseek%20logo.jpg" alt="DeepSeek" width="28" height="28" loading="lazy" decoding="async">
+                            </div>
+                            <div class="best-tool-info">
+                                <span class="best-tool-name">DeepSeek</span>
+                                <span class="best-tool-desc">Advanced reasoning AI</span>
+                            </div>
+                        </a>
+                        <a href="https://x.ai" target="_blank" rel="noopener" class="best-tool-card">
+                            <div class="best-tool-icon">
+                                <img src="src/assets/ai%20logo/grock%20logo.jpg" alt="Grok" width="28" height="28" loading="lazy" decoding="async">
+                            </div>
+                            <div class="best-tool-info">
+                                <span class="best-tool-name">Grok</span>
+                                <span class="best-tool-desc">Real-time information agent</span>
+                            </div>
+                        </a>
+                        <a href="https://perplexity.ai" target="_blank" rel="noopener" class="best-tool-card">
+                            <div class="best-tool-icon">
+                                <img src="src/assets/ai%20logo/perpalxity%20logo.jpg" alt="Perplexity" width="28" height="28" loading="lazy" decoding="async">
+                            </div>
+                            <div class="best-tool-info">
+                                <span class="best-tool-name">Perplexity</span>
+                                <span class="best-tool-desc">Conversational search engine</span>
+                            </div>
+                        </a>
+                        <a href="https://mistral.ai" target="_blank" rel="noopener" class="best-tool-card">
+                            <div class="best-tool-icon">
+                                <img src="src/assets/ai%20logo/mistral%20logo.jpg" alt="Mistral" width="28" height="28" loading="lazy" decoding="async">
+                            </div>
+                            <div class="best-tool-info">
+                                <span class="best-tool-name">Mistral</span>
+                                <span class="best-tool-desc">Open-weight language models</span>
+                            </div>
+                        </a>
+                    </div>
+                </section>
+
+                <!-- 4. DEV TOOLS CARD -->
+                <section class="panel-section glass-panel dev-tools-hero-section animate-fade-in">
+                    <div class="section-header">
+                        <div class="header-title">
+                            <svg class="section-header-icon" viewBox="0 0 24 24" width="16" height="16" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round"><path d="M16 18l6-6-6-6M8 6L2 12l6 6"/></svg>
+                            <h2>Dev Tools</h2>
+                        </div>
+                        <a href="#" class="view-all-header-link" data-target-tab="dev-tools">View All</a>
+                    </div>
+                    <div class="best-tools-list" id="devToolsHeroList">
+                        <a href="https://code.visualstudio.com" target="_blank" rel="noopener" class="best-tool-card">
+                            <div class="best-tool-icon">
+                                <svg viewBox="0 0 24 24" width="18" height="18" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></svg>
+                            </div>
+                            <div class="best-tool-info">
+                                <span class="best-tool-name">VS Code</span>
+                                <span class="best-tool-desc">Powerful code editor</span>
+                            </div>
+                        </a>
+                        <a href="https://github.com" target="_blank" rel="noopener" class="best-tool-card">
+                            <div class="best-tool-icon">
+                                <svg viewBox="0 0 24 24" width="18" height="18" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"/></svg>
+                            </div>
+                            <div class="best-tool-info">
+                                <span class="best-tool-name">GitHub</span>
+                                <span class="best-tool-desc">Code hosting &amp; collaboration</span>
+                            </div>
+                        </a>
+                        <a href="https://www.docker.com" target="_blank" rel="noopener" class="best-tool-card">
+                            <div class="best-tool-icon">
+                                <svg viewBox="0 0 24 24" width="18" height="18" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="10" width="6" height="4" rx="1"/><rect x="9" y="10" width="6" height="4" rx="1"/><rect x="16" y="10" width="6" height="4" rx="1"/><rect x="9" y="5" width="6" height="4" rx="1"/></svg>
+                            </div>
+                            <div class="best-tool-info">
+                                <span class="best-tool-name">Docker</span>
+                                <span class="best-tool-desc">Containerization platform</span>
+                            </div>
+                        </a>
+                        <a href="https://www.postman.com" target="_blank" rel="noopener" class="best-tool-card">
+                            <div class="best-tool-icon">
+                                <svg viewBox="0 0 24 24" width="18" height="18" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round"><line x1="22" y1="2" x2="11" y2="13"/><polygon points="22 2 15 22 11 13 2 9 22 2"/></svg>
+                            </div>
+                            <div class="best-tool-info">
+                                <span class="best-tool-name">Postman</span>
+                                <span class="best-tool-desc">API design &amp; testing</span>
+                            </div>
+                        </a>
+                        <a href="https://supabase.com" target="_blank" rel="noopener" class="best-tool-card">
+                            <div class="best-tool-icon">
+                                <svg viewBox="0 0 24 24" width="18" height="18" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round"><ellipse cx="12" cy="5" rx="9" ry="3"/><path d="M21 12c0 1.66-4 3-9 3s-9-1.34-9-3"/><path d="M3 5v14c0 1.66 4 3 9 3s9-1.34 9-3V5"/></svg>
+                            </div>
+                            <div class="best-tool-info">
+                                <span class="best-tool-name">Supabase</span>
+                                <span class="best-tool-desc">Open source Firebase alt</span>
+                            </div>
+                        </a>
+                        <a href="https://figma.com" target="_blank" rel="noopener" class="best-tool-card">
+                            <div class="best-tool-icon">
+                                <svg viewBox="0 0 24 24" width="18" height="18" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round"><path d="M5 5.5A3.5 3.5 0 0 1 8.5 2H12v7H8.5A3.5 3.5 0 0 1 5 5.5z"/><path d="M12 2h3.5a3.5 3.5 0 1 1 0 7H12V2z"/><path d="M12 12.5a3.5 3.5 0 1 1 7 0 3.5 3.5 0 1 1-7 0z"/><path d="M5 19.5A3.5 3.5 0 0 1 8.5 16H12v3.5a3.5 3.5 0 1 1-7 0z"/><path d="M5 12.5A3.5 3.5 0 0 1 8.5 9H12v7H8.5A3.5 3.5 0 0 1 5 12.5z"/></svg>
+                            </div>
+                            <div class="best-tool-info">
+                                <span class="best-tool-name">Figma</span>
+                                <span class="best-tool-desc">UI/UX design platform</span>
+                            </div>
+                        </a>
+                        <a href="https://vercel.com" target="_blank" rel="noopener" class="best-tool-card">
+                            <div class="best-tool-icon">
+                                <svg viewBox="0 0 24 24" width="18" height="18" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round"><polygon points="12 2 22 20 2 20"/></svg>
+                            </div>
+                            <div class="best-tool-info">
+                                <span class="best-tool-name">Vercel</span>
+                                <span class="best-tool-desc">Frontend cloud platform</span>
+                            </div>
+                        </a>
+                    </div>
+                </section>
+
+                <!-- 5. MY PROJECTS CARD -->
+                <section class="panel-section glass-panel my-projects-hero-section animate-fade-in">
+                    <div class="section-header">
+                        <div class="header-title">
+                            <svg class="section-header-icon" viewBox="0 0 24 24" width="16" height="16" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="2" ry="2"/><line x1="9" y1="3" x2="9" y2="21"/><line x1="15" y1="3" x2="15" y2="21"/></svg>
+                            <h2>My Projects</h2>
+                        </div>
+                        <a href="#" class="view-all-header-link" data-target-tab="projects">View All</a>
+                    </div>
+                    <div class="best-tools-list" id="heroProjectsList">
+                        <a href="https://resumesuit.netlify.app/" target="_blank" rel="noopener" class="project-item-card">
+                            <div class="project-item-thumb-container">
+                                <img class="project-item-thumb" src="./src/assets/project1.webp" alt="ResumeSuit" width="60" height="38" loading="lazy" decoding="async">
+                            </div>
+                            <div class="project-item-info">
+                                <div class="project-item-header">
+                                    <span class="project-item-name">ResumeSuit</span>
+                                    <span class="project-item-badge">Live</span>
+                                </div>
+                            </div>
+                        </a>
+                        <a href="https://freshlinks.netlify.app/" target="_blank" rel="noopener" class="project-item-card">
+                            <div class="project-item-thumb-container">
+                                <img class="project-item-thumb" src="./src/assets/project2.webp" alt="FreshLinks" width="60" height="38" loading="lazy" decoding="async">
+                            </div>
+                            <div class="project-item-info">
+                                <div class="project-item-header">
+                                    <span class="project-item-name">FreshLinks</span>
+                                    <span class="project-item-badge">Live</span>
+                                </div>
+                            </div>
+                        </a>
+                        <a href="https://aiinterviwer.netlify.app/" target="_blank" rel="noopener" class="project-item-card">
+                            <div class="project-item-thumb-container">
+                                <img class="project-item-thumb" src="./src/assets/project3.webp" alt="AI Interviewer" width="60" height="38" loading="lazy" decoding="async">
+                            </div>
+                            <div class="project-item-info">
+                                <div class="project-item-header">
+                                    <span class="project-item-name">AI Interviewer</span>
+                                    <span class="project-item-badge">Live</span>
+                                </div>
+                            </div>
+                        </a>
+                        <a href="https://aiopenlibrary.netlify.app/" target="_blank" rel="noopener" class="project-item-card">
+                            <div class="project-item-thumb-container">
+                                <img class="project-item-thumb" src="./src/assets/project4.webp" alt="AI Open Library" width="60" height="38" loading="lazy" decoding="async">
+                            </div>
+                            <div class="project-item-info">
+                                <div class="project-item-header">
+                                    <span class="project-item-name">AI Open Library</span>
+                                    <span class="project-item-badge">Live</span>
+                                </div>
+                            </div>
+                        </a>
+                        <a href="https://freevibecoder.netlify.app/" target="_blank" rel="noopener" class="project-item-card">
+                            <div class="project-item-thumb-container">
+                                <img class="project-item-thumb" src="./src/assets/project5.webp" alt="FreeVibe Coder" width="60" height="38" loading="lazy" decoding="async">
+                            </div>
+                            <div class="project-item-info">
+                                <div class="project-item-header">
+                                    <span class="project-item-name">FreeVibe Coder</span>
+                                    <span class="project-item-badge">Live</span>
+                                </div>
+                            </div>
+                        </a>
+                        <a href="https://uiworld.netlify.app/" target="_blank" rel="noopener" class="project-item-card">
+                            <div class="project-item-thumb-container">
+                                <img class="project-item-thumb" src="./src/assets/project6.webp" alt="UI World" width="60" height="38" loading="lazy" decoding="async">
+                            </div>
+                            <div class="project-item-info">
+                                <div class="project-item-header">
+                                    <span class="project-item-name">UI World</span>
+                                    <span class="project-item-badge">Live</span>
+                                </div>
+                            </div>
+                        </a>
+                        <a href="https://stackeasy.netlify.app/" target="_blank" rel="noopener" class="project-item-card">
+                            <div class="project-item-thumb-container">
+                                <img class="project-item-thumb" src="./src/assets/project7.webp" alt="StackEasy" width="60" height="38" loading="lazy" decoding="async">
+                            </div>
+                            <div class="project-item-info">
+                                <div class="project-item-header">
+                                    <span class="project-item-name">StackEasy</span>
+                                    <span class="project-item-badge">Live</span>
+                                </div>
+                            </div>
+                        </a>
+                    </div>
+                </section>
+            </div>
+
+            <!-- CARD SLIDER HERO SECTION (Full Width) -->
+
+            <!-- DEV TOOLS HUB PAGE -->
+            <div class="devtools-hub-container hidden" id="devtoolsHubContainer">
+                <div class="devtools-header">
+                    <h2>Dev Tools Hub</h2>
+                    <p>Developer resources, tools, commands, prompts, APIs, and utilities.</p>
+                </div>
+                
+                <div class="devtools-grid">
+
+                    <!-- Card 3: Best AI Tools -->
+                    <div class="devtools-card glass-panel" role="button" tabindex="0" aria-label="Best AI Tools" data-url="https://gemini.google.com">
+                        <div class="devtools-card-icon">
+                            <svg viewBox="0 0 24 24" width="22" height="22" stroke="currentColor" stroke-width="2.5" fill="none" stroke-linecap="round" stroke-linejoin="round"><rect x="4" y="4" width="16" height="16" rx="2" ry="2"></rect><rect x="9" y="9" width="6" height="6"></rect><line x1="9" y1="1" x2="9" y2="4"></line><line x1="15" y1="1" x2="15" y2="4"></line><line x1="9" y1="20" x2="9" y2="23"></line><line x1="15" y1="20" x2="15" y2="23"></line><line x1="20" y1="9" x2="23" y2="9"></line><line x1="20" y1="15" x2="23" y2="15"></line><line x1="1" y1="9" x2="4" y2="9"></line><line x1="1" y1="15" x2="4" y2="15"></line></svg>
+                        </div>
+                        <div class="devtools-card-content">
+                            <h3>Best AI Tools</h3>
+                            <p>Hand-picked development tools, programming models, and coding assistants.</p>
+                        </div>
+                    </div>
+
+                    <!-- Card 4: AI Plugins -->
+                    <div class="devtools-card glass-panel" role="button" tabindex="0" aria-label="AI Plugins" data-url="https://openai.com">
+                        <div class="devtools-card-icon">
+                            <svg viewBox="0 0 24 24" width="22" height="22" stroke="currentColor" stroke-width="2.5" fill="none" stroke-linecap="round" stroke-linejoin="round"><path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"></path><polyline points="3.27 6.96 12 12.01 20.73 6.96"></polyline><line x1="12" y1="22.08" x2="12" y2="12"></line></svg>
+                        </div>
+                        <div class="devtools-card-content">
+                            <h3>AI Plugins</h3>
+                            <p>Plugins, dependencies, and APIs to integrate intelligence models into your workspace.</p>
+                        </div>
+                    </div>
+
+                    <!-- Card 5: Free APIs -->
+                    <div class="devtools-card glass-panel" role="button" tabindex="0" aria-label="Free APIs" data-url="https://public-apis.xyz">
+                        <div class="devtools-card-icon">
+                            <svg viewBox="0 0 24 24" width="22" height="22" stroke="currentColor" stroke-width="2.5" fill="none" stroke-linecap="round" stroke-linejoin="round"><path d="M18 10h-1.26A8 8 0 1 0 9 20h9a5 5 0 0 0 0-10z"></path></svg>
+                        </div>
+                        <div class="devtools-card-content">
+                            <h3>Free APIs</h3>
+                            <p>Collection of free public APIs for fetching data, development, and application building.</p>
+                        </div>
+                    </div>
+
+                    <!-- Card 6: UI Components -->
+                    <div class="devtools-card glass-panel" role="button" tabindex="0" aria-label="UI Components" data-url="https://uiverse.io">
+                        <div class="devtools-card-icon">
+                            <svg viewBox="0 0 24 24" width="22" height="22" stroke="currentColor" stroke-width="2.5" fill="none" stroke-linecap="round" stroke-linejoin="round"><polygon points="12 2 2 7 12 12 22 7 12 2"></polygon><polyline points="2 17 12 22 22 17"></polyline><polyline points="2 12 12 17 22 12"></polyline></svg>
+                        </div>
+                        <div class="devtools-card-content">
+                            <h3>UI Components</h3>
+                            <p>Pre-styled CSS layout sheets, modern templates, and reusable glassmorphic components.</p>
+                        </div>
+                    </div>
+
+                    <!-- Card 7: Fonts Collection -->
+                    <div class="devtools-card glass-panel" role="button" tabindex="0" aria-label="Fonts Collection" data-url="https://fonts.google.com">
+                        <div class="devtools-card-icon">
+                            <svg viewBox="0 0 24 24" width="22" height="22" stroke="currentColor" stroke-width="2.5" fill="none" stroke-linecap="round" stroke-linejoin="round"><polyline points="4 7 4 4 20 4 20 7"></polyline><line x1="9" y1="20" x2="15" y2="20"></line><line x1="12" y1="4" x2="12" y2="20"></line></svg>
+                        </div>
+                        <div class="devtools-card-content">
+                            <h3>Fonts Collection</h3>
+                            <p>Premium monospaced fonts and clean typefaces optimized for coding aesthetics.</p>
+                        </div>
+                    </div>
+
+
+                    <!-- Card 9: Security Tools -->
+                    <div class="devtools-card glass-panel" role="button" tabindex="0" aria-label="Security Tools" data-url="https://owasp.org">
+                        <div class="devtools-card-icon">
+                            <svg viewBox="0 0 24 24" width="22" height="22" stroke="currentColor" stroke-width="2.5" fill="none" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path></svg>
+                        </div>
+                        <div class="devtools-card-content">
+                            <h3>Security Tools</h3>
+                            <p>Utilities for encryption keys, auditing secure headers, and vulnerability analysis.</p>
+                        </div>
+                    </div>
+
+                    <!-- Card: Skill -->
+                    <div class="devtools-card glass-panel" role="button" tabindex="0" aria-label="Skill" data-url="https://aiguideskill.netlify.app/skills">
+                        <div class="devtools-card-icon">
+                            <svg viewBox="0 0 24 24" width="22" height="22" stroke="currentColor" stroke-width="1.5" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                                <path d="M12 2v4M12 18v4M4.93 4.93l2.83 2.83M16.24 16.24l2.83 2.83M2 12h4M18 12h4M4.93 19.07l2.83-2.83M16.24 7.76l2.83-2.83"></path>
+                                <circle cx="12" cy="12" r="4"></circle>
+                            </svg>
+                        </div>
+                        <div class="devtools-card-content">
+                            <h3>Skills</h3>
+                            <p>Activate customized AI skills and workflow automation modules.</p>
+                        </div>
+                    </div>
+
+                    <!-- Card: Command -->
+                    <div class="devtools-card glass-panel" role="button" tabindex="0" aria-label="Command" data-url="https://aiguideskill.netlify.app/commands">
+                        <div class="devtools-card-icon">
+                            <svg viewBox="0 0 24 24" width="22" height="22" stroke="currentColor" stroke-width="1.5" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                                <rect x="2" y="3" width="20" height="14" rx="2" ry="2"></rect>
+                                <line x1="8" y1="21" x2="16" y2="21"></line>
+                                <line x1="12" y1="17" x2="12" y2="21"></line>
+                                <polyline points="6 8 9 11 6 14"></polyline>
+                                <line x1="10" y1="14" x2="18" y2="14"></line>
+                            </svg>
+                        </div>
+                        <div class="devtools-card-content">
+                            <h3>Commands</h3>
+                            <p>Execute terminal instructions and shell utilities instantly.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- AI HUB PAGE -->
+            <div class="ai-hub-container hidden" id="aiHubContainer">
+                <div class="ai-header">
+                    <h2>AI Hub</h2>
+                    <p>Discover leading AI models, services, developer frameworks, creative studios, and automation utilities.</p>
+                </div>
+                
+                <div class="ai-grid">
+                    <!-- Card 1: OpenAI -->
+                    <div class="ai-card glass-panel" role="button" tabindex="0" aria-label="OpenAI" data-url="https://openai.com">
+                        <div class="ai-card-logo-container">
+                            <img class="ai-card-logo" src="src/assets/ai%20logo/open%20ai%20logo.jpg" alt="OpenAI Logo" width="40" height="40" loading="lazy" decoding="async">
+                        </div>
+                        <div class="ai-card-content">
+                            <h3>OpenAI</h3>
+                            <p>Advanced AI research and language models for productivity, coding, and automation.</p>
+                        </div>
+                    </div>
+
+                    <!-- Card 3: Claude -->
+                    <div class="ai-card glass-panel" role="button" tabindex="0" aria-label="Claude" data-url="https://claude.ai">
+                        <div class="ai-card-logo-container">
+                            <img class="ai-card-logo" src="src/assets/ai%20logo/claude%20logo.jpg" alt="Claude Logo" width="40" height="40" loading="lazy" decoding="async">
+                        </div>
+                        <div class="ai-card-content">
+                            <h3>Claude</h3>
+                            <p>AI assistant focused on reasoning, analysis, coding, and long-form tasks.</p>
+                        </div>
+                    </div>
+
+                    <!-- Card 4: Anthropic -->
+                    <div class="ai-card glass-panel" role="button" tabindex="0" aria-label="Anthropic" data-url="https://anthropic.com">
+                        <div class="ai-card-logo-container">
+                            <img class="ai-card-logo" src="src/assets/ai%20logo/anthropic%20ai%20logo.jpg" alt="Anthropic Logo" width="40" height="40" loading="lazy" decoding="async">
+                        </div>
+                        <div class="ai-card-content">
+                            <h3>Anthropic</h3>
+                            <p>Safety-first research lab developing Claude and core language model alignment.</p>
+                        </div>
+                    </div>
+
+                    <!-- Card 5: Gemini -->
+                    <div class="ai-card glass-panel" role="button" tabindex="0" aria-label="Gemini" data-url="https://gemini.google.com">
+                        <div class="ai-card-logo-container">
+                            <img class="ai-card-logo" src="src/assets/ai%20logo/gemini%20logo.jpg" alt="Gemini Logo" width="40" height="40" loading="lazy" decoding="async">
+                        </div>
+                        <div class="ai-card-content">
+                            <h3>Gemini</h3>
+                            <p>Google's multimodal AI platform for research, coding, productivity, and content generation.</p>
+                        </div>
+                    </div>
+
+                    <!-- Card 6: Google AI Studio -->
+                    <div class="ai-card glass-panel" role="button" tabindex="0" aria-label="Google AI Studio" data-url="https://aistudio.google.com">
+                        <div class="ai-card-logo-container">
+                            <img class="ai-card-logo" src="src/assets/ai%20logo/googleaistudio%20logo.jpg" alt="Google AI Studio Logo" width="40" height="40" loading="lazy" decoding="async">
+                        </div>
+                        <div class="ai-card-content">
+                            <h3>Google AI Studio</h3>
+                            <p>Web-based prototyping environment for experimenting with Gemini models and APIs.</p>
+                        </div>
+                    </div>
+
+                    <!-- Card 7: DeepSeek -->
+                    <div class="ai-card glass-panel" role="button" tabindex="0" aria-label="DeepSeek" data-url="https://deepseek.com">
+                        <div class="ai-card-logo-container">
+                            <img class="ai-card-logo" src="src/assets/ai%20logo/deepseek%20logo.jpg" alt="DeepSeek Logo" width="40" height="40" loading="lazy" decoding="async">
+                        </div>
+                        <div class="ai-card-content">
+                            <h3>DeepSeek</h3>
+                            <p>Highly efficient open-source language and reasoning models specialized in code and math.</p>
+                        </div>
+                    </div>
+
+                    <!-- Card 8: Grok -->
+                    <div class="ai-card glass-panel" role="button" tabindex="0" aria-label="Grok" data-url="https://x.ai">
+                        <div class="ai-card-logo-container">
+                            <img class="ai-card-logo" src="src/assets/ai%20logo/grock%20logo.jpg" alt="Grok Logo" width="40" height="40" loading="lazy" decoding="async">
+                        </div>
+                        <div class="ai-card-content">
+                            <h3>Grok</h3>
+                            <p>Real-time, expressive information assistant developed by xAI integrated with current data.</p>
+                        </div>
+                    </div>
+
+                    <!-- Card 9: Meta AI -->
+                    <div class="ai-card glass-panel" role="button" tabindex="0" aria-label="Meta AI" data-url="https://meta.ai">
+                        <div class="ai-card-logo-container">
+                            <img class="ai-card-logo" src="src/assets/ai%20logo/meta%20logo.jpg" alt="Meta AI Logo" width="40" height="40" loading="lazy" decoding="async">
+                        </div>
+                        <div class="ai-card-content">
+                            <h3>Meta AI</h3>
+                            <p>Generative assistant for chat, search, image creation, and reasoning across social networks.</p>
+                        </div>
+                    </div>
+
+                    <!-- Card 10: Llama -->
+                    <div class="ai-card glass-panel" role="button" tabindex="0" aria-label="Llama" data-url="https://llama.meta.com">
+                        <div class="ai-card-logo-container">
+                            <img class="ai-card-logo" src="src/assets/ai%20logo/llama%20logo.jpg" alt="Llama Logo" width="40" height="40" loading="lazy" decoding="async">
+                        </div>
+                        <div class="ai-card-content">
+                            <h3>Llama</h3>
+                            <p>Meta's open-weights LLM family driving locally hosted and custom model development.</p>
+                        </div>
+                    </div>
+
+                    <!-- Card 11: Mistral AI -->
+                    <div class="ai-card glass-panel" role="button" tabindex="0" aria-label="Mistral AI" data-url="https://mistral.ai">
+                        <div class="ai-card-logo-container">
+                            <img class="ai-card-logo" src="src/assets/ai%20logo/mistral%20logo.jpg" alt="Mistral AI Logo" width="40" height="40" loading="lazy" decoding="async">
+                        </div>
+                        <div class="ai-card-content">
+                            <h3>Mistral AI</h3>
+                            <p>European open-source developer of efficient, powerful, and customizable language models.</p>
+                        </div>
+                    </div>
+
+                    <!-- Card 12: Perplexity -->
+                    <div class="ai-card glass-panel" role="button" tabindex="0" aria-label="Perplexity" data-url="https://perplexity.ai">
+                        <div class="ai-card-logo-container">
+                            <img class="ai-card-logo" src="src/assets/ai%20logo/perpalxity%20logo.jpg" alt="Perplexity Logo" width="40" height="40" loading="lazy" decoding="async">
+                        </div>
+                        <div class="ai-card-content">
+                            <h3>Perplexity</h3>
+                            <p>Conversational search engine delivering direct answers with linked source citations.</p>
+                        </div>
+                    </div>
+
+                    <!-- Card 13: Qwen -->
+                    <div class="ai-card glass-panel" role="button" tabindex="0" aria-label="Qwen" data-url="https://github.com/QwenLM/Qwen2">
+                        <div class="ai-card-logo-container">
+                            <img class="ai-card-logo" src="src/assets/ai%20logo/qwen%20logo.jpg" alt="Qwen Logo" width="40" height="40" loading="lazy" decoding="async">
+                        </div>
+                        <div class="ai-card-content">
+                            <h3>Qwen</h3>
+                            <p>Alibaba's robust language and vision models driving intelligence across multi-language tasks.</p>
+                        </div>
+                    </div>
+
+                    <!-- Card 14: Microsoft Copilot -->
+                    <div class="ai-card glass-panel" role="button" tabindex="0" aria-label="Microsoft Copilot" data-url="https://copilot.microsoft.com">
+                        <div class="ai-card-logo-container">
+                            <img class="ai-card-logo" src="src/assets/ai%20logo/Microsoft%20Copilot%20logo.jpg" alt="Microsoft Copilot Logo" width="40" height="40" loading="lazy" decoding="async">
+                        </div>
+                        <div class="ai-card-content">
+                            <h3>Microsoft Copilot</h3>
+                            <p>Integrated enterprise assistant automating workflows, coding, and content across MS Office.</p>
+                        </div>
+                    </div>
+
+                    <!-- Card 15: GitHub Copilot -->
+                    <div class="ai-card glass-panel" role="button" tabindex="0" aria-label="GitHub Copilot" data-url="https://github.com/features/copilot">
+                        <div class="ai-card-logo-container">
+                            <img class="ai-card-logo" src="src/assets/ai%20logo/github%20Copilot%20Logo.jpg" alt="GitHub Copilot Logo" width="40" height="40" loading="lazy" decoding="async">
+                        </div>
+                        <div class="ai-card-content">
+                            <h3>GitHub Copilot</h3>
+                            <p>AI pair programmer suggesting code lines, tests, and complete files inside your editor.</p>
+                        </div>
+                    </div>
+
+                    <!-- Card 16: Codex -->
+                    <div class="ai-card glass-panel" role="button" tabindex="0" aria-label="Codex" data-url="https://openai.com/blog/openai-codex">
+                        <div class="ai-card-logo-container">
+                            <img class="ai-card-logo" src="src/assets/ai%20logo/Codex%20logo.jpg" alt="Codex Logo" width="40" height="40" loading="lazy" decoding="async">
+                        </div>
+                        <div class="ai-card-content">
+                            <h3>Codex</h3>
+                            <p>AI system translating natural language instructions directly into executable software code.</p>
+                        </div>
+                    </div>
+
+                    <!-- Card 17: Cursor -->
+                    <div class="ai-card glass-panel" role="button" tabindex="0" aria-label="Cursor" data-url="https://cursor.com">
+                        <div class="ai-card-logo-container">
+                            <img class="ai-card-logo" src="src/assets/ai%20logo/Cursor%20logo.jpg" alt="Cursor Logo" width="40" height="40" loading="lazy" decoding="async">
+                        </div>
+                        <div class="ai-card-content">
+                            <h3>Cursor</h3>
+                            <p>Modern developer environment with deep inline AI suggestions and codebase reasoning.</p>
+                        </div>
+                    </div>
+
+                    <!-- Card 18: Windsurf -->
+                    <div class="ai-card glass-panel" role="button" tabindex="0" aria-label="Windsurf" data-url="https://codeium.com/windsurf">
+                        <div class="ai-card-logo-container">
+                            <img class="ai-card-logo" src="src/assets/ai%20logo/Windsurf%20logo.jpg" alt="Windsurf Logo" width="40" height="40" loading="lazy" decoding="async">
+                        </div>
+                        <div class="ai-card-content">
+                            <h3>Windsurf</h3>
+                            <p>Agentic software IDE featuring direct code generation and context-aware workspace refactoring.</p>
+                        </div>
+                    </div>
+
+                    <!-- Card 19: Replit AI -->
+                    <div class="ai-card glass-panel" role="button" tabindex="0" aria-label="Replit AI" data-url="https://replit.com">
+                        <div class="ai-card-logo-container">
+                            <img class="ai-card-logo" src="src/assets/ai%20logo/replit%20logo.jpg" alt="Replit AI Logo" width="40" height="40" loading="lazy" decoding="async">
+                        </div>
+                        <div class="ai-card-content">
+                            <h3>Replit AI</h3>
+                            <p>Cloud workspace assistant providing inline autocompletion, debugging, and deployment help.</p>
+                        </div>
+                    </div>
+
+                    <!-- Card 20: Bolt.new -->
+                    <div class="ai-card glass-panel" role="button" tabindex="0" aria-label="Bolt.new" data-url="https://bolt.new">
+                        <div class="ai-card-logo-container">
+                            <img class="ai-card-logo" src="src/assets/ai%20logo/Bolt.new%20logo.jpg" alt="Bolt.new Logo" width="40" height="40" loading="lazy" decoding="async">
+                        </div>
+                        <div class="ai-card-content">
+                            <h3>Bolt.new</h3>
+                            <p>Web-based fullstack prototyping agent launching sandbox web apps directly from prompts.</p>
+                        </div>
+                    </div>
+
+                    <!-- Card 21: Lovable -->
+                    <div class="ai-card glass-panel" role="button" tabindex="0" aria-label="Lovable" data-url="https://lovable.dev">
+                        <div class="ai-card-logo-container">
+                            <img class="ai-card-logo" src="src/assets/ai%20logo/lovable%20logo.jpg" alt="Lovable Logo" width="40" height="40" loading="lazy" decoding="async">
+                        </div>
+                        <div class="ai-card-content">
+                            <h3>Lovable</h3>
+                            <p>Fullstack software engineer agent building complete, production-ready web apps from text.</p>
+                        </div>
+                    </div>
+
+                    <!-- Card 22: V0 -->
+                    <div class="ai-card glass-panel" role="button" tabindex="0" aria-label="V0" data-url="https://v0.dev">
+                        <div class="ai-card-logo-container">
+                            <img class="ai-card-logo" src="src/assets/ai%20logo/vo%20logo.png" alt="V0 Logo" width="40" height="40" loading="lazy" decoding="async">
+                        </div>
+                        <div class="ai-card-content">
+                            <h3>V0</h3>
+                            <p>Generative UI assistant by Vercel crafting clean, production-ready frontend components.</p>
+                        </div>
+                    </div>
+
+                    <!-- Card 23: Runway -->
+                    <div class="ai-card glass-panel" role="button" tabindex="0" aria-label="Runway" data-url="https://runwayml.com">
+                        <div class="ai-card-logo-container">
+                            <img class="ai-card-logo" src="src/assets/ai%20logo/Runway%20logo.jpg" alt="Runway Logo" width="40" height="40" loading="lazy" decoding="async">
+                        </div>
+                        <div class="ai-card-content">
+                            <h3>Runway</h3>
+                            <p>AI-powered creative suite generating cinematic videos, motion graphics, and image effects.</p>
+                        </div>
+                    </div>
+
+                    <!-- Card 24: Midjourney -->
+                    <div class="ai-card glass-panel" role="button" tabindex="0" aria-label="Midjourney" data-url="https://midjourney.com">
+                        <div class="ai-card-logo-container">
+                            <img class="ai-card-logo" src="src/assets/ai%20logo/Midjourney%20logo.jpg" alt="Midjourney Logo" width="40" height="40" loading="lazy" decoding="async">
+                        </div>
+                        <div class="ai-card-content">
+                            <h3>Midjourney</h3>
+                            <p>Generative visual engine turning descriptive text prompts into premium creative art.</p>
+                        </div>
+                    </div>
+
+                    <!-- Card 25: Stability AI -->
+                    <div class="ai-card glass-panel" role="button" tabindex="0" aria-label="Stability AI" data-url="https://stability.ai">
+                        <div class="ai-card-logo-container">
+                            <img class="ai-card-logo" src="src/assets/ai%20logo/Stability%20AI%20logo.jpg" alt="Stability AI Logo" width="40" height="40" loading="lazy" decoding="async">
+                        </div>
+                        <div class="ai-card-content">
+                            <h3>Stability AI</h3>
+                            <p>Developer of Stable Diffusion driving open-weights image, audio, and video models.</p>
+                        </div>
+                    </div>
+
+                    <!-- Card 26: ElevenLabs -->
+                    <div class="ai-card glass-panel" role="button" tabindex="0" aria-label="ElevenLabs" data-url="https://elevenlabs.io">
+                        <div class="ai-card-logo-container">
+                            <img class="ai-card-logo" src="src/assets/ai%20logo/ElevenLabs%20logo.jpg" alt="ElevenLabs Logo" width="40" height="40" loading="lazy" decoding="async">
+                        </div>
+                        <div class="ai-card-content">
+                            <h3>ElevenLabs</h3>
+                            <p>Hyper-realistic voice synthesis and voice cloning for audiobooks, games, and media.</p>
+                        </div>
+                    </div>
+
+                    <!-- Card 27: Suno -->
+                    <div class="ai-card glass-panel" role="button" tabindex="0" aria-label="Suno" data-url="https://suno.com">
+                        <div class="ai-card-logo-container">
+                            <img class="ai-card-logo" src="src/assets/ai%20logo/Suno%20logo.jpg" alt="Suno Logo" width="40" height="40" loading="lazy" decoding="async">
+                        </div>
+                        <div class="ai-card-content">
+                            <h3>Suno</h3>
+                            <p>Generative music creator turning textual prompts into full, high-fidelity songs.</p>
+                        </div>
+                    </div>
+
+                    <!-- Card 28: NotebookLM -->
+                    <div class="ai-card glass-panel" role="button" tabindex="0" aria-label="NotebookLM" data-url="https://notebooklm.google">
+                        <div class="ai-card-logo-container">
+                            <img class="ai-card-logo" src="src/assets/ai%20logo/NotebookLM%20logo.jpg" alt="NotebookLM Logo" width="40" height="40" loading="lazy" decoding="async">
+                        </div>
+                        <div class="ai-card-content">
+                            <h3>NotebookLM</h3>
+                            <p>Personal research assistant by Google summarizing documents and generating podcasts.</p>
+                        </div>
+                    </div>
+
+                    <!-- Card 29: Hugging Face -->
+                    <div class="ai-card glass-panel" role="button" tabindex="0" aria-label="Hugging Face" data-url="https://huggingface.co">
+                        <div class="ai-card-logo-container">
+                            <img class="ai-card-logo" src="src/assets/ai%20logo/Hugging%20Face%20logo.jpg" alt="Hugging Face Logo" width="40" height="40" loading="lazy" decoding="async">
+                        </div>
+                        <div class="ai-card-content">
+                            <h3>Hugging Face</h3>
+                            <p>Collaborative repository and model hub for hosting open-source machine learning assets.</p>
+                        </div>
+                    </div>
+
+                    <!-- Card 30: Ollama -->
+                    <div class="ai-card glass-panel" role="button" tabindex="0" aria-label="Ollama" data-url="https://ollama.com">
+                        <div class="ai-card-logo-container">
+                            <img class="ai-card-logo" src="src/assets/ai%20logo/Ollama%20logo.jpg" alt="Ollama Logo" width="40" height="40" loading="lazy" decoding="async">
+                        </div>
+                        <div class="ai-card-content">
+                            <h3>Ollama</h3>
+                            <p>Lightweight tool to run large language models locally on your computer.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- PROJECTS HUB PAGE -->
+            <div class="projects-hub-container hidden" id="projectsHubContainer">
+                <div class="projects-header">
+                    <h2>My Projects</h2>
+                    <p>Discover my full applications and software products.</p>
+                </div>
+                <!-- recommendationsGrid will be dynamically appended here when active -->
+            </div>
+
+            <!-- SLIDER HEADER -->
+            <header class="slider-header animate-fade-in" id="sliderHeader">
+                <div class="slider-header-badge">
+                    <svg viewBox="0 0 24 24" width="12" height="12" stroke="currentColor" stroke-width="2.5" fill="none" stroke-linecap="round" stroke-linejoin="round" class="badge-icon"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon></svg>
+                    <span>Featured Innovation</span>
+                </div>
+                <h2>Featured Toolkits &amp; Banners</h2>
+                <p>Explore high-impact digital solutions, curated frameworks, and live applications designed to streamline development and supercharge productivity.</p>
+            </header>
+
+            <!-- HERO SLIDER CAROUSEL -->
+            <section class="hero-panel glass-panel animate-scale-up" id="heroPanel">
+                <!-- Hero Slides Data Container -->
+                <div class="hero-carousel-container">
+                    <!-- Dynamic slides from Supabase -->
+                </div>
+
+                <!-- Left/Right Arrow Navigation -->
+                <button class="hero-arrow-btn arrow-left" id="heroPrevBtn" aria-label="Previous Slide">
+                    <svg viewBox="0 0 24 24" width="20" height="20" stroke="currentColor" stroke-width="2.5" fill="none" stroke-linecap="round" stroke-linejoin="round"><polyline points="15 18 9 12 15 6"></polyline></svg>
+                </button>
+                <button class="hero-arrow-btn arrow-right" id="heroNextBtn" aria-label="Next Slide">
+                    <svg viewBox="0 0 24 24" width="20" height="20" stroke="currentColor" stroke-width="2.5" fill="none" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"></polyline></svg>
+                </button>
+            </section>
+
+            <!-- SLIDER DESCRIPTION / VALUE PROPOSITION SECTION -->
+            <section class="slider-desc-section glass-panel animate-fade-in" id="sliderDescription">
+                <!-- Left Column: Visual Spec Card -->
+                <div class="slider-desc-visuals">
+                    <div class="spec-card">
+                        <div class="spec-card-header">
+                            <span class="spec-badge badge-amber">SPEC-001</span>
+                            <span class="spec-title-text">ecosystem &middot; core framework</span>
+                            <span class="spec-badge badge-green">ready</span>
+                        </div>
+                        
+                        <div class="spec-row">
+                            <div class="spec-label">GOAL</div>
+                            <div class="spec-value">Deliver high-impact, visual-first UI component suites and AI tools.</div>
+                        </div>
+
+                        <div class="spec-row">
+                            <div class="spec-label">SCOPE</div>
+                            <div class="spec-value">Pure vanilla web apps, Chrome/Firefox compatibility, and Supabase database integrations.</div>
+                        </div>
+
+                        <div class="spec-row">
+                            <div class="spec-label">PLAN</div>
+                            <div class="spec-value">
+                                <ul class="spec-checklist">
+                                    <li class="check-done">migration: add supabase real-time sync</li>
+                                    <li class="check-pending">ui-hub: add interactive glassmorphism blueprints</li>
+                                    <li class="check-pending">ai-integration: deploy custom API endpoint helpers</li>
+                                    <li class="check-future">verify: accessibility audits & keyboard focus compliance</li>
+                                </ul>
+                            </div>
+                        </div>
+
+                        <div class="spec-row spec-last">
+                            <div class="spec-label">VERIFY</div>
+                            <div class="spec-value">3/5 modules active &middot; 60% &middot; local dev build green</div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Right Column: Editorial Information -->
+                <div class="slider-desc-info">
+                    <div class="slider-desc-eyebrow">§ 03 &middot; STEARY ECOSYSTEM</div>
+                    <h2 class="slider-desc-headline">Spec-driven development,<br>taken seriously.</h2>
+                    <p class="slider-desc-paragraph">Our toolkits are engineered on a pure vanilla stack to run without bloated dependencies. We combine raw speed with sophisticated glassmorphism and real-time database capabilities.</p>
+                    
+                    <ul class="slider-desc-features-list">
+                        <li class="slider-desc-feature-item">
+                            <strong>Premium UI Components.</strong> Ready-to-deploy component libraries, styled with custom CSS and tailored transitions.
+                        </li>
+                        <li class="slider-desc-feature-item">
+                            <strong>AI Integrations &amp; APIs.</strong> Custom endpoints, dataset parsing tools, and specialized computational research models.
+                        </li>
+                    </ul>
+
+                    <div class="slider-desc-action-buttons">
+                        <a href="#recommendationsRow" class="btn-slider-primary">Explore ecosystem</a>
+                        <a href="#" class="btn-slider-secondary" id="sliderSpecLink">Read the spec</a>
+                    </div>
+                </div>
+            </section>
+        </div> <!-- End of top-container -->
+
+        <!-- Bottom Glass Container -->
+        <div class="app-container bottom-container glass-panel animate-scale-up">
+            <!-- "YOU MIGHT LIKE" ROW -->
+            <section class="you-might-like" id="recommendationsRow">
+                <div class="row-header">
+                    <h2 class="ai-projects-heading">
+                        My Projects
+                        <span class="typing-container">
+                            <span class="typing-prompt">&gt; </span><span class="typing-word">code</span><span class="typing-cursor"></span>
+                        </span>
+                    </h2>
+                    <a href="#" class="see-all-link" id="seeAllBtn">See all</a>
+                </div>
+
+                <div class="recommendations-grid" id="recommendationsGrid">
+                    <!-- Card 1 (ResumeSuit AI Project) -->
+                    <div class="movie-card glass-card animate-staggered-item" data-genre="tools" data-is-project="true" data-project-url="https://resumesuit.netlify.app/">
+                        <div class="movie-poster-container">
+                            <img class="movie-poster" src="./src/assets/project1.webp" alt="ResumeSuit AI Resume Builder" width="300" height="169" loading="lazy" decoding="async">
+                            <div class="movie-poster-overlay"></div>
+                            <span class="card-genre-badge glass-panel">AI Tool</span>
+                            <button class="card-play-btn project-card-btn" aria-label="Open Project" data-project-url="https://resumesuit.netlify.app/">
+                                <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path><polyline points="15 3 21 3 21 9"></polyline><line x1="10" y1="14" x2="21" y2="3"></line></svg>
+                            </button>
+                        </div>
+                        <div class="movie-card-info">
+                            <h3 class="movie-title">ResumeSuit</h3>
+                            <p class="movie-desc">An AI-powered resume building platform to create professional resumes in minutes.</p>
+                        </div>
+                    </div>
+
+
+                    <!-- Card 3 (AI Interviewer AI Project) -->
+                    <div class="movie-card glass-card animate-staggered-item" data-genre="tools" data-is-project="true" data-project-url="https://aiinterviwer.netlify.app/">
+                        <div class="movie-poster-container">
+                            <img class="movie-poster" src="./src/assets/project3.webp" alt="AI Interviewer Professional Practice" width="300" height="169" loading="lazy" decoding="async">
+                            <div class="movie-poster-overlay"></div>
+                            <span class="card-genre-badge glass-panel">AI Tool</span>
+                            <button class="card-play-btn project-card-btn" aria-label="Open Project" data-project-url="https://aiinterviwer.netlify.app/">
+                                <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path><polyline points="15 3 21 3 21 9"></polyline><line x1="10" y1="14" x2="21" y2="3"></line></svg>
+                            </button>
+                        </div>
+                        <div class="movie-card-info">
+                            <h3 class="movie-title">AI Interviewer</h3>
+                            <p class="movie-desc">Practice interviews in a simulated corporate workspace with instant AI feedback.</p>
+                        </div>
+                    </div>
+
+                    <!-- Card 4 (AI Open Library AI Project) -->
+                    <div class="movie-card glass-card animate-staggered-item" data-genre="ai" data-is-project="true" data-project-url="https://aiopenlibrary.netlify.app/">
+                        <div class="movie-poster-container">
+                            <img class="movie-poster" src="./src/assets/project4.webp" alt="AI Open Library Archive" width="300" height="169" loading="lazy" decoding="async">
+                            <div class="movie-poster-overlay"></div>
+                            <span class="card-genre-badge glass-panel">AI Model</span>
+                            <button class="card-play-btn project-card-btn" aria-label="Open Project" data-project-url="https://aiopenlibrary.netlify.app/">
+                                <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path><polyline points="15 3 21 3 21 9"></polyline><line x1="10" y1="14" x2="21" y2="3"></line></svg>
+                            </button>
+                        </div>
+                        <div class="movie-card-info">
+                            <h3 class="movie-title">AI Open Library</h3>
+                            <p class="movie-desc">An open digital library referencing and categorizing thousands of AI papers, books, and models.</p>
+                        </div>
+                    </div>
+
+
+                    <!-- Card 6 (UI World AI Project) -->
+                    <div class="movie-card glass-card animate-staggered-item" data-genre="tools" data-is-project="true" data-project-url="https://uiworld.netlify.app/">
+                        <div class="movie-poster-container">
+                            <img class="movie-poster" src="./src/assets/project6.webp" alt="UI World Component Library" width="300" height="169" loading="lazy" decoding="async">
+                            <div class="movie-poster-overlay"></div>
+                            <span class="card-genre-badge glass-panel">AI Tool</span>
+                            <button class="card-play-btn project-card-btn" aria-label="Open Project" data-project-url="https://uiworld.netlify.app/">
+                                <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path><polyline points="15 3 21 3 21 9"></polyline><line x1="10" y1="14" x2="21" y2="3"></line></svg>
+                            </button>
+                        </div>
+                        <div class="movie-card-info">
+                            <h3 class="movie-title">UI World</h3>
+                            <p class="movie-desc">An extensive library of premium UI components and glassmorphic design templates.</p>
+                        </div>
+                    </div>
+
+                    <!-- Card 7 (StackEasy AI Project) -->
+                    <div class="movie-card glass-card animate-staggered-item" data-genre="tools" data-is-project="true" data-project-url="https://stackeasy.netlify.app/">
+                        <div class="movie-poster-container">
+                            <img class="movie-poster" src="./src/assets/project7.webp" alt="StackEasy Project Management" width="300" height="169" loading="lazy" decoding="async">
+                            <div class="movie-poster-overlay"></div>
+                            <span class="card-genre-badge glass-panel">AI Tool</span>
+                            <button class="card-play-btn project-card-btn" aria-label="Open Project" data-project-url="https://stackeasy.netlify.app/">
+                                <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path><polyline points="15 3 21 3 21 9"></polyline><line x1="10" y1="14" x2="21" y2="3"></line></svg>
+                            </button>
+                        </div>
+                        <div class="movie-card-info">
+                            <h3 class="movie-title">StackEasy</h3>
+                            <p class="movie-desc">A powerful AI-driven project management tool for developers and small teams.</p>
+                        </div>
+                    </div>
+
+                    <!-- Card 8 (primuimfreemusic AI Project) -->
+                    <div class="movie-card glass-card animate-staggered-item" data-genre="more" data-is-project="true" data-project-url="https://primuimfreemusic.netlify.app/">
+                        <div class="movie-poster-container">
+                            <img class="movie-poster" src="./src/assets/project8.webp" alt="primuimfreemusic" width="300" height="169" loading="lazy" decoding="async">
+                            <div class="movie-poster-overlay"></div>
+                            <span class="card-genre-badge glass-panel">AI Service</span>
+                            <button class="card-play-btn project-card-btn" aria-label="Open Project" data-project-url="https://primuimfreemusic.netlify.app/">
+                                <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path><polyline points="15 3 21 3 21 9"></polyline><line x1="10" y1="14" x2="21" y2="3"></line></svg>
+                            </button>
+                        </div>
+                        <div class="movie-card-info">
+                            <h3 class="movie-title">primuimfreemusic</h3>
+                            <p class="movie-desc">Unlimited high-quality royalty-free music for creators and enthusiasts.</p>
+                        </div>
+                    </div>
+
+                    <!-- Dynamic project cards from Supabase -->
+                </div>
+            </section>
+
+            <!-- AI IMPACT & DEVELOPMENT EFFICIENCY SECTION -->
+            <section class="ai-efficiency" id="aiEfficiencySection">
+                <!-- Left Column: Editorial Information -->
+                <div class="ai-efficiency-info">
+                    <div class="ai-eyebrow">§ AI &middot; OPTIMIZATION</div>
+                    <h2 class="ai-headline">The catalyst.<br>Intelligence that eats complex syntax for breakfast.</h2>
+                    <p class="ai-description">AI assistants are no longer simple autocompletes. They are active collaborators that analyze logic, refactor legacy systems, and automate boilerplate, leaving you free to focus on creative engineering.</p>
+                    
+                    <ul class="ai-features-list">
+                        <li class="ai-feature-item">
+                            <strong>Context-aware suggestions.</strong> Real-time syntax validation and semantic analysis mapped to your specific codebase structures.
+                        </li>
+                        <li class="ai-feature-item">
+                            <strong>Accelerated coding speed.</strong> Instant scaffolding and boilerplate generation to spin up robust projects in minutes instead of hours.
+                        </li>
+                        <li class="ai-feature-item">
+                            <strong>Advanced workflow sync.</strong> Integrated task tracking, inline documentation generation, and proactive vulnerability scanning.
+                        </li>
+                    </ul>
+
+                    <div class="ai-action-buttons">
+                        <a href="https://github.com" target="_blank" rel="noopener" class="btn-ai-primary">View integration spec</a>
+                        <a href="#" class="btn-ai-secondary" id="aiDocLink">Read documentation</a>
+                    </div>
+                </div>
+
+                <!-- Right Column: Visual Proof (Terminal + Data Chart) -->
+                <div class="ai-efficiency-visuals">
+                    <!-- Terminal Wrapper -->
+                    <div class="mock-terminal animate-scale-up">
+                        <div class="terminal-header">
+                            <span class="terminal-dots">•••</span>
+                            <span class="terminal-title">steary &middot; prompt-optimizer.ts</span>
+                        </div>
+                        <div class="terminal-content">
+                            <pre><code><span class="code-comment">// before - 4,820 tokens (Verbose & manual boilerplate)</span>
+<span class="code-keyword">const</span> <span class="code-var">prompt</span> = <span class="code-str">"You are an expert engineer. Walk through every step, consider edge cases..."</span>;
+
+<span class="code-comment">// after - 1,204 tokens (-75% reduction via AI semantic compression)</span>
+<span class="code-keyword">const</span> <span class="code-var">compressed</span> = <span class="code-keyword">await</span> <span class="code-func">aiOptimizer</span>.<span class="code-func">compress</span>(<span class="code-var">prompt</span>, {
+    <span class="code-prop">dict</span>: <span class="code-str">'eng/v2'</span>,
+    <span class="code-prop">preserve</span>: [<span class="code-str">'examples'</span>, <span class="code-str">'schema'</span>]
+});
+
+<span class="code-comment">// fidelity kept, compile times and token footprint minimized</span></code></pre>
+                        </div>
+                    </div>
+
+                    <!-- Impact Graph/Card -->
+                    <div class="visual-impact-card animate-scale-up">
+                        <div class="impact-header">
+                            <span class="impact-label">BEFORE</span>
+                            <span class="impact-arrow">&rarr;</span>
+                            <span class="impact-label">AFTER</span>
+                        </div>
+                        
+                        <div class="impact-comparison">
+                            <div class="comparison-column">
+                                <div class="block-grid block-grid-before">
+                                    <div class="grid-block gray-block"></div>
+                                    <div class="grid-block gray-block"></div>
+                                    <div class="grid-block gray-block"></div>
+                                    <div class="grid-block gray-block"></div>
+                                    <div class="grid-block gray-block"></div>
+                                    <div class="grid-block gray-block"></div>
+                                    <div class="grid-block gray-block"></div>
+                                    <div class="grid-block gray-block"></div>
+                                    <div class="grid-block gray-block"></div>
+                                    <div class="grid-block gray-block"></div>
+                                    <div class="grid-block gray-block"></div>
+                                    <div class="grid-block gray-block"></div>
+                                </div>
+                                <span class="comparison-val">4,820 tok (Verbose)</span>
+                            </div>
+                            
+                            <div class="comparison-column">
+                                <div class="block-grid block-grid-after">
+                                    <div class="grid-block glow-block"></div>
+                                    <div class="grid-block glow-block"></div>
+                                    <div class="grid-block glow-block"></div>
+                                    <div class="grid-block glow-block"></div>
+                                </div>
+                                <span class="comparison-val accent-val">1,204 tok (-75%)</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </div> <!-- End of bottom-container -->
+
+        <!-- Footer Glass Container -->
+        <footer class="app-container footer-container glass-panel animate-scale-up">
+            <div class="footer-content">
+                <!-- Brand Section -->
+                <div class="footer-brand">
+                    <div class="footer-logo">
+                        <svg class="logo-icon" viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="white" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false">
+                            <path class="logo-chevron" d="M6 6l6 6-6 6" />
+                            <line class="logo-cursor" x1="14" y1="18" x2="20" y2="18" />
+                        </svg>
+                        <span>Steary</span>
+                    </div>
+                    <p class="brand-desc">Your ultimate streaming companion. Enjoy unlimited movies, series, and animations in high-fidelity glassmorphism.</p>
+                    
+                    <!-- App Download Links -->
+                    <div class="download-badges">
+                        <a href="#" class="badge-btn glass-card" aria-label="Download on the App Store">
+                            <svg viewBox="0 0 24 24" width="16" height="16" fill="currentColor" aria-hidden="true" focusable="false"><path d="M18.71,19.5C17.88,20.74,17,21.95,15.66,22c-1.31,0-1.72-.8-3.22-.8s-2,.78-3.25.82c-1.31,0-2.26-1.29-3.1-2.5C4.38,17,3.13,11.87,4.86,8.87C5.72,7.38,7.25,6.44,8.91,6.41c1.26,0,2.45.87,3.22.87S14.89,6.4,16.4,6.56A5.44,5.44,0,0,1,20.65,8.8c-3.6,2.16-3,7,.79,8.54C20.69,18.5,19.72,19.5,18.71,19.5M15.91,3.48a4.91,4.91,0,0,0,1.17-3.48,5,5,0,0,0-3.24,1.66,4.68,4.68,0,0,0-1.2,3.37A4.66,4.66,0,0,0,15.91,3.48Z"/></svg>
+                            <div class="badge-text">
+                                <span>Download on the</span>
+                                <strong>App Store</strong>
+                            </div>
+                        </a>
+                        <a href="#" class="badge-btn glass-card" aria-label="Get it on Google Play">
+                            <svg viewBox="0 0 24 24" width="16" height="16" fill="currentColor" aria-hidden="true" focusable="false"><path d="M5,22a1,1,0,0,1-1-1V3a1,1,0,0,1,1.55-.83l15,10a1,1,0,0,1,0,1.66l-15,10A1,1,0,0,1,5,22ZM6,4.78v14.44L16.83,12Z"/></svg>
+                            <div class="badge-text">
+                                <span>GET IT ON</span>
+                                <strong>Google Play</strong>
+                            </div>
+                        </a>
+                    </div>
+
+                    <!-- Language Selector Dropdown -->
+                    <div class="language-dropdown-wrapper">
+                        <button class="lang-btn glass-card" id="langBtn" aria-haspopup="true" aria-expanded="false" aria-label="Choose Language">
+                            <svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="globe-icon" aria-hidden="true" focusable="false"><circle cx="12" cy="12" r="10"></circle><line x1="2" y1="12" x2="22" y2="12"></line><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"></path></svg>
+                            <span>English (US)</span>
+                            <svg viewBox="0 0 24 24" width="10" height="10" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="chevron-icon" aria-hidden="true" focusable="false"><polyline points="6 9 12 15 18 9"></polyline></svg>
+                        </button>
+                        <div class="lang-menu glass-panel" id="langMenu">
+                            <button class="lang-item active">English (US)</button>
+                            <button class="lang-item">Español</button>
+                            <button class="lang-item">Français</button>
+                            <button class="lang-item">Deutsch</button>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Links Columns -->
+                <div class="footer-links-grid">
+                    <div class="footer-col">
+                        <h3>Explore</h3>
+                        <ul>
+                            <li><a href="#">Home</a></li>
+                            <li><a href="#">Tools</a></li>
+                            <li><a href="#">AI</a></li>
+                        </ul>
+                    </div>
+                    <div class="footer-col">
+                        <h3>Platform</h3>
+                        <ul>
+                            <li><a href="about.html">About Us</a></li>
+                            <li><a href="#">Devices</a></li>
+                            <li><a href="#">Downloads</a></li>
+                            <li><a href="#">Subscription Plans</a></li>
+                        </ul>
+                    </div>
+                    <div class="footer-col">
+                        <h3>Legal & Support</h3>
+                        <ul>
+                            <li><a href="help.html">Help Center</a></li>
+                            <li><a href="terms.html">Terms of Use</a></li>
+                            <li><a href="privacy.html">Privacy Policy</a></li>
+                            <li><a href="contact.html">Contact Support</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Footer Divider -->
+            <div class="footer-divider"></div>
+
+            <!-- Footer Bottom Row -->
+            <div class="footer-bottom">
+                <p class="copyright">&copy; 2026 Steary Inc. All rights reserved.</p>
+
+
+                <!-- Social Icons -->
+                <div class="footer-socials">
+                    <a href="#" aria-label="Twitter">
+                        <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M22 4s-.7 2.1-2 3.4c1.6 10-9.4 17.3-18 11.6 2.2.1 4.4-.6 6-2C3 15.5.5 9.6 3 5c2.2 2.6 5.6 4.1 9 4-.9-4.2 4-6.6 7-3.8 1.1 0 3-1.2 3-1.2z"></path></svg>
+                    </a>
+                    <a href="#" aria-label="Instagram">
+                        <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line></svg>
+                    </a>
+                    <a href="#" aria-label="YouTube">
+                        <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M22.54 6.42a2.78 2.78 0 0 0-1.94-2C18.88 4 12 4 12 4s-6.88 0-8.6.46a2.78 2.78 0 0 0-1.94 2A29 29 0 0 0 1 11.75a2.9 2.9 0 0 0 .46 5.33A29 29 0 0 0 12 20s6.88 0 8.6-.46a2.78 2.78 0 0 0 1.94-2 29 29 0 0 0 .46-5.33 29 29 0 0 0-.46-5.33z"></path><polygon points="9.75 15.02 15.5 11.75 9.75 8.48 9.75 15.02"></polygon></svg>
+                    </a>
+                    <a href="#" aria-label="Discord">
+                        <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><circle cx="9" cy="12" r="1"></circle><circle cx="15" cy="12" r="1"></circle><path d="M19 5.3a20.4 20.4 0 0 0-4.1-1.3l-.5.9A18.5 18.5 0 0 0 9.6 4.9l-.5-.9A20.4 20.4 0 0 0 5 5.3a19.7 19.7 0 0 0-2 10.3 20.2 20.2 0 0 0 5.4 2.8l1.1-1.6a13.3 13.3 0 0 1-3.2-1.6l.8-.7a14.7 14.7 0 0 0 10.2 0l.8.7a13.3 13.3 0 0 1-3.2 1.6l1.1 1.6a20.2 20.2 0 0 0 5.4-2.8 19.7 19.7 0 0 0-2-10.3z"></path></svg>
+                    </a>
+                </div>
+            </div>
+        </footer>
+    </div> <!-- End of app-layout-wrapper -->
+
+    <!-- GLASSMORPHIC VIDEO PLAYER MODAL OVERLAY (SIMULATED WATCH FEATURE) -->
+    <div class="player-overlay" id="playerOverlay">
+        <div class="player-container glass-panel">
+            <header class="player-header">
+                <h2 class="player-title" id="playerMovieTitle">Playing Stream</h2>
+                <button class="player-close-btn" id="playerCloseBtn" aria-label="Close Player">
+                    <svg viewBox="0 0 24 24" width="24" height="24" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg>
+                </button>
+            </header>
+            <div class="player-video-wrapper">
+                <!-- YouTube embed placeholder for trailer -->
+                <iframe id="playerIframe" title="Video Player" src="" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+            </div>
+        </div>
+    </div>
+
+    <!-- GLASSMORPHIC PROJECT PREVIEW MODAL OVERLAY (IFRAME EMBED FEATURE) -->
+    <div class="project-overlay" id="projectOverlay">
+        <div class="project-container glass-panel">
+            <header class="project-header">
+                <div class="project-header-left">
+                    <button class="project-back-btn" id="projectBackBtn" aria-label="Go Back">
+                        <svg viewBox="0 0 24 24" width="18" height="18" stroke="currentColor" stroke-width="2.5" fill="none" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><line x1="19" y1="12" x2="5" y2="12"></line><polyline points="12 19 5 12 12 5"></polyline></svg>
+                        <span>Back</span>
+                    </button>
+                    <h2 class="project-title" id="projectPreviewTitle">Project Preview</h2>
+                    <a class="project-open-btn" id="projectOpenTabBtn" href="#" target="_blank" title="Open Live Site" aria-label="Open Live Site">
+                        <svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path><polyline points="15 3 21 3 21 9"></polyline><line x1="10" y1="14" x2="21" y2="3"></line></svg>
+                        <span>Open Live Site</span>
+                    </a>
+                </div>
+                
+                <div class="project-controls">
+                    <!-- Fullscreen -->
+                    <button class="control-btn" id="projectFullscreenBtn" title="Fullscreen" aria-label="Toggle Fullscreen">
+                        <svg viewBox="0 0 24 24" width="16" height="16" stroke="currentColor" stroke-width="2.5" fill="none" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M8 3H5a2 2 0 0 0-2 2v3m18 0V5a2 2 0 0 0-2-2h-3m0 18h3a2 2 0 0 0 2-2v-3M3 16v3a2 2 0 0 0 2 2h3"></path></svg>
+                    </button>
+                </div>
+            </header>
+            
+            <div class="project-iframe-wrapper" id="projectIframeWrapper">
+                <!-- Advanced Coding Loader -->
+                <div class="iframe-coding-loader" id="iframeLoader">
+                    <!-- Floating Particles -->
+                    <div class="coding-particles">
+                        <span class="particle" style="left: 10%; animation-duration: 8s; animation-delay: 0s;">{...}</span>
+                        <span class="particle" style="left: 25%; animation-duration: 12s; animation-delay: 2s;">&lt;/&gt;</span>
+                        <span class="particle" style="left: 50%; animation-duration: 10s; animation-delay: 4s;">console.log()</span>
+                        <span class="particle" style="left: 75%; animation-duration: 9s; animation-delay: 1s;">011010</span>
+                        <span class="particle" style="left: 90%; animation-duration: 11s; animation-delay: 3s;">=&gt;</span>
+                    </div>
+                    
+                    <!-- Terminal UI -->
+                    <div class="terminal-container">
+                        <div class="terminal-header">
+                            <span class="dot red"></span>
+                            <span class="dot yellow"></span>
+                            <span class="dot green"></span>
+                            <span class="terminal-title">bash - steary_ai_engine</span>
+                        </div>
+                        <div class="terminal-body">
+                            <div class="terminal-line">
+                                <span class="prompt-arrow">➜</span>
+                                <span class="typing-text"></span><span class="terminal-cursor">|</span>
+                            </div>
+                        </div>
+                        <div class="loader-progress-bar">
+                            <div class="loader-progress"></div>
+                        </div>
+                    </div>
+                </div>
+
+                <iframe id="projectIframe" title="Project Live Preview" src="" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+            </div>
+        </div>
+    </div>
+
+    <!-- PROFILE CENTER -->
+    <div class="profile-overlay" id="profileOverlay" aria-hidden="true">
+        <div class="profile-center glass-panel">
+            <header class="profile-center-header">
+                <div>
+                    <h2>Profile Center</h2>
+                    <p>Edit profile, settings, account privacy, and contact details.</p>
+                </div>
+                <button class="profile-center-close" id="profileCenterCloseBtn" aria-label="Close Profile Center">
+                    <svg viewBox="0 0 24 24" width="20" height="20" stroke="currentColor" stroke-width="2.5" fill="none" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg>
+                </button>
+            </header>
+
+            <div class="profile-center-body">
+                <aside class="profile-center-nav">
+                    <button class="profile-center-tab active" data-profile-tab="view">View Profile</button>
+                    <button class="profile-center-tab" data-profile-tab="settings">Settings</button>
+                    <button class="profile-center-tab" data-profile-tab="account">Account & Privacy</button>
+                    <button class="profile-center-tab" data-profile-tab="notifications">Notifications</button>
+                    <button class="profile-center-tab" data-profile-tab="contact">Contact Us</button>
+                </aside>
+
+                <section class="profile-center-panels">
+                    <div class="profile-center-panel active" id="profilePanel-view">
+                        <div class="profile-summary">
+                            <img id="profileAvatarPreview" src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?q=80&w=200&auto=format&fit=crop" alt="Profile preview" width="120" height="120" loading="lazy" decoding="async">
+                            <div>
+                                <h3 id="profileDisplayNamePreview">Guest User</h3>
+                                <p id="profileHandlePreview">@guest</p>
+                            </div>
+                        </div>
+                        <div class="profile-form-grid">
+                            <label class="profile-field"><span>Display Name</span><input type="text" id="profileDisplayName" placeholder="Your name"></label>
+                            <label class="profile-field"><span>Username</span><input type="text" id="profileHandle" placeholder="@username"></label>
+                            <label class="profile-field"><span>Email</span><input type="email" id="profileEmail" placeholder="you@example.com"></label>
+                            <label class="profile-field"><span>Website</span><input type="url" id="profileWebsite" placeholder="https://..."></label>
+                            <label class="profile-field profile-field-wide"><span>Bio</span><textarea id="profileBio" rows="3" placeholder="Short profile bio"></textarea></label>
+                            <label class="profile-field"><span>Avatar URL</span><input type="url" id="profileAvatarUrl" placeholder="https://..."></label>
+                            <label class="profile-field"><span>Upload Local Image</span><input type="file" id="profileAvatarFile" accept="image/*"></label>
+                        </div>
+                        <div class="profile-actions-row">
+                            <button type="button" class="btn btn-primary" id="saveProfileBtn">Save Profile</button>
+                            <button type="button" class="btn btn-secondary" id="resetProfileBtn">Reset</button>
+                        </div>
+                    </div>
+
+                    <div class="profile-center-panel" id="profilePanel-settings">
+                        <div class="profile-card-block">
+                            <h3>General Settings</h3>
+                            <div class="profile-toggle-list">
+                                <label class="profile-toggle"><input type="checkbox" id="settingAutoplay"><span>Auto-play hero previews</span></label>
+                                <label class="profile-toggle"><input type="checkbox" id="settingNotifications"><span>Show new content notifications</span></label>
+                                <label class="profile-toggle"><input type="checkbox" id="settingCompact"><span>Use compact cards on mobile</span></label>
+                                <label class="profile-toggle"><input type="checkbox" id="settingPrivateProfile"><span>Keep profile info hidden from quick view</span></label>
+                                <label class="profile-toggle"><input type="checkbox" id="settingLightMode"><span>Light mode (with hourly pastel hues)</span></label>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="profile-center-panel" id="profilePanel-account">
+                        <div class="profile-card-block">
+                            <h3>Account & Privacy</h3>
+                            <p class="profile-note">This site keeps profile data local to your browser. Password changes are not sent anywhere from this page.</p>
+                            <div class="profile-form-grid">
+                                <label class="profile-field"><span>Current Password</span><input type="password" id="accountCurrentPassword" placeholder="Enter current password"></label>
+                                <label class="profile-field"><span>New Password</span><input type="password" id="accountNewPassword" placeholder="Enter new password"></label>
+                                <label class="profile-field"><span>Confirm Password</span><input type="password" id="accountConfirmPassword" placeholder="Confirm new password"></label>
+                            </div>
+                            <div class="profile-actions-row">
+                                <button type="button" class="btn btn-primary" id="savePasswordBtn">Save Password Note</button>
+                                <button type="button" class="btn btn-secondary" id="clearLocalDataBtn">Clear Local Data</button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="profile-center-panel" id="profilePanel-notifications">
+                        <div class="profile-card-block">
+                            <h3>Notification Preferences</h3>
+                            <p class="profile-note">New news, projects, and slider cards will appear here automatically while this page stays open. Items expire after 24 hours.</p>
+                            <div id="profileNotificationList" class="profile-notification-list"></div>
+                        </div>
+                    </div>
+
+                    <div class="profile-center-panel" id="profilePanel-contact">
+                        <div class="profile-card-block">
+                            <h3>Contact Us</h3>
+                            <p class="profile-note">For support, updates, or project feedback, use the contact details below.</p>
+                            <div class="contact-card">
+                                <span>Email</span>
+                                <a href="mailto:god9882@gmail.com">god9882@gmail.com</a>
+                            </div>
+                            <div class="contact-card">
+                                <span>X</span>
+                                <a href="https://x.com/DeathGod890" target="_blank" rel="noreferrer">@DeathGod890</a>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+            </div>
+        </div>
+    </div>
+
+    <!-- Auth Modal (Sign In / Create Account) -->
+    <div class="auth-modal-overlay" id="authModal">
+        <div class="auth-modal-card glass-panel">
+            <button class="auth-modal-close" id="authModalClose" type="button" aria-label="Close authentication modal">✕</button>
+            <div class="auth-modal-header">
+                <h2 id="authModalTitle">Sign In</h2>
+                <p id="authModalSubtitle">Sign in to sync your Steary profile preferences</p>
+            </div>
+            <div class="auth-tabs">
+                <button class="auth-tab-btn active" id="authTabSignIn" type="button">Sign In</button>
+                <button class="auth-tab-btn" id="authTabSignUp" type="button">Create Account</button>
+            </div>
+            <form class="auth-form" id="authForm" novalidate>
+                <div class="auth-form-group hidden" id="authFormGroupName">
+                    <label for="authName">Display Name</label>
+                    <div class="auth-input-wrapper">
+                        <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path><circle cx="12" cy="7" r="4"></circle></svg>
+                        <input type="text" id="authName" placeholder="e.g. John Doe">
+                    </div>
+                </div>
+                <div class="auth-form-group">
+                    <label for="authEmail">Email Address</label>
+                    <div class="auth-input-wrapper">
+                        <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path><polyline points="22,6 12,13 2,6"></polyline></svg>
+                        <input type="email" id="authEmail" placeholder="you@example.com" required>
+                    </div>
+                </div>
+                <div class="auth-form-group">
+                    <label for="authPassword">Password</label>
+                    <div class="auth-input-wrapper">
+                        <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"></rect><path d="M7 11V7a5 5 0 0 1 10 0v4"></path></svg>
+                        <input type="password" id="authPassword" placeholder="••••••••" required>
+                    </div>
+                </div>
+                <button type="submit" class="btn btn-primary auth-submit-btn" id="authSubmitBtn">Sign In</button>
+            </form>
+        </div>
+    </div>
+
+    <!-- Supabase CDN Client Library -->
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2" defer></script>
+    <!-- Main JavaScript Logic -->
+    <script src="app.min.js" defer></script>
+</body>
+</html>

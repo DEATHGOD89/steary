@@ -1,0 +1,356 @@
+# SKILLS Landing Page Design System
+
+## Design Style
+
+Theme: Cyberpunk Terminal + Retro Hacker + Modern AI
+Mood: Minimal, futuristic, developer-focused
+Color Scheme: Pure Black & White
+
+Background:
+- #000000
+- No gradients
+- No colorful elements
+- Very subtle noise/grain texture optional
+
+Text Colors:
+- Primary: #FFFFFF
+- Secondary: #A0A0A0
+- Muted: #707070
+
+---
+
+## Layout
+
+Desktop Layout:
+- Two-column hero section
+
+Left Side:
+- Large SKILLS logo
+- Subtitle underneath
+- Terminal install box
+- Command copy button
+
+Right Side:
+- Large marketing headline
+- Agent compatibility section
+- Agent logos/icons row
+
+Container:
+- Max Width: 1400px
+- Padding: 80px horizontal
+- Center aligned
+
+Spacing:
+- Large whitespace throughout
+- 80px section gaps
+
+---
+
+## Navigation
+
+Position:
+- Top Right
+
+Items:
+- Topics
+- Official
+- Audits
+- Docs
+
+Style:
+- Small text
+- Monospace
+- White text
+- Hover opacity effect
+
+Font Size:
+- 16px
+
+Hover:
+- Opacity 70%
+
+---
+
+## Logo Section
+
+Logo Text:
+SKILLS
+
+Style:
+- Retro pixel typography
+- White
+- Large scale
+- Glitch effect
+
+Font Size:
+- 120px+
+
+Effects:
+- Multiple offset shadows
+- Pixel distortion
+- RGB shift very subtle
+
+Subtitle:
+THE OPEN AGENT SKILLS ECOSYSTEM
+
+Font:
+- IBM Plex Mono
+- Monospace
+
+Size:
+- 24px
+
+Letter spacing:
+- 2px
+
+---
+
+## Hero Headline
+
+Typography:
+- Clean sans-serif
+
+Font:
+- Inter
+- Geist
+- SF Pro
+
+Weight:
+- 400
+
+Size:
+- 56px
+
+Color:
+- #B0B0B0
+
+Max Width:
+- 700px
+
+Line Height:
+- 1.2
+
+Content Position:
+- Vertically centered
+
+---
+
+## Install Command Box
+
+Label:
+TRY IT NOW
+
+Font:
+Monospace
+
+Command Container:
+Background: #111111
+Border: 1px solid #1F1F1F
+Radius: 12px
+
+Size:
+Width: 430px
+Height: 64px
+
+Command:
+$ npx skills update
+
+Font:
+IBM Plex Mono
+
+Size:
+24px
+
+Copy Button:
+- Right aligned
+- Icon only
+- Hover glow
+
+Hover:
+Background: #171717
+
+---
+
+## Agent Compatibility Section
+
+Title:
+AVAILABLE FOR THESE AGENTS
+
+Font:
+IBM Plex Mono
+
+Size:
+24px
+
+Spacing:
+40px below title
+
+Layout:
+Horizontal icon row
+
+Gap:
+50px
+
+Icons:
+- Claude
+- ChatGPT
+- Gemini
+- Amp
+- Cursor
+- Continue
+- Other AI agents
+
+Style:
+White monochrome
+
+Opacity:
+80%
+
+Hover:
+100%
+Scale 1.05
+
+---
+
+## Components
+
+### Terminal Card
+
+Properties:
+- Rounded corners
+- Dark surface
+- Border
+- Copy button
+
+Animation:
+- Fade in
+- Hover elevation
+
+---
+
+### Agent Icon
+
+Size:
+64px
+
+Hover:
+transform: scale(1.05);
+
+Transition:
+0.2s ease
+
+---
+
+## Effects
+
+### Glitch Logo
+
+Layers:
+3
+
+Effect:
+- Horizontal jitter
+- Small RGB split
+- Scanline offset
+
+Animation:
+Infinite
+
+Duration:
+4s
+
+Very subtle
+
+---
+
+### Fade Animations
+
+Elements:
+- Hero Text
+- Command Box
+- Agent Icons
+
+Duration:
+0.5s
+
+Easing:
+ease-out
+
+---
+
+## Typography
+
+Primary Font:
+Inter
+
+Secondary Font:
+IBM Plex Mono
+
+Fallback:
+system-ui
+
+Hierarchy:
+
+Hero:
+56px
+
+Section Titles:
+24px
+
+Body:
+18px
+
+Small:
+16px
+
+---
+
+## Responsive Design
+
+Tablet:
+- Stack columns
+- Hero text below logo
+
+Mobile:
+- Single column
+- Center aligned
+
+Logo:
+80px
+
+Hero:
+36px
+
+Command Box:
+100% width
+
+Icons:
+Wrap automatically
+
+Navigation:
+Hamburger menu
+
+---
+
+## Performance
+
+Requirements:
+- Lighthouse Score 95+
+- Fully responsive
+- No layout shifts
+- Lazy load icons
+- Optimized animations
+
+---
+
+## Inspiration Keywords
+
+Cyberpunk
+Terminal UI
+Developer Tools
+AI Infrastructure
+Open Source
+Retro Computing
+Monochrome Design
+Minimal Brutalism
+Hacker Aesthetic

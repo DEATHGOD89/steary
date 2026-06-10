@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Download Steary - Desktop Client</title>
+    <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='white' stroke-width='3.5' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M6 6l6 6-6 6'/%3E%3Cline x1='14' y1='18' x2='20' y2='18'/%3E%3C/svg%3E">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="preload" as="image" href="src/assets/bg.webp" type="image/webp">
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body class="light-mode">
+    <script>
+        (function() {
+            try {
+                const prefs = localStorage.getItem('steary.profile.preferences');
+                if (prefs && JSON.parse(prefs).lightMode === false) document.body.classList.remove('light-mode');
+            } catch (e) {}
+        })();
+    </script>
+    <div class="app-bg-container">
+        <img class="app-bg-image" src="src/assets/bg.webp" alt="Website Background" loading="eager" decoding="async">
+        <div class="app-bg-overlay"></div>
+    </div>
+
+    <div class="app-layout-wrapper" id="viewport">
+        <div class="app-container top-container glass-panel animate-scale-up">
+            <nav class="navbar glass-panel animate-fade-in" style="display:flex; justify-content:space-between;">
+                <div class="navbar-left">
+                    <a href="index.html" class="navbar-brand" style="text-decoration:none; color:inherit;">
+                        <svg class="logo-icon" viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round">
+                            <path class="logo-chevron" d="M6 6l6 6-6 6" />
+                            <line class="logo-cursor" x1="14" y1="18" x2="20" y2="18" />
+                        </svg>
+                        <span>Steary</span>
+                    </a>
+                </div>
+                <div class="navbar-right">
+                    <a href="index.html" class="btn btn-secondary" style="text-decoration:none;">Return Home</a>
+                </div>
+            </nav>
+
+            <div class="download-landing-wrapper animate-fade-in" style="animation-delay: 0.1s;">
+                
+                <div class="download-hero">
+                    <h1>Steary Desktop</h1>
+                    <p>The ultimate lightweight companion for your workflow. Instantly accessible, engineered for zero resource overhead.</p>
+                    <div class="download-buttons-group">
+                        <a href="#" class="btn-os-download">
+                            <svg viewBox="0 0 88 88" width="24" height="24" fill="currentColor">
+                              <path d="M0,12.402l35.687-4.86l0,34.423l-35.687,0l0,-29.563Zm0,33.563l35.687,0l0,34.02l-35.687-4.908l0,-29.112Zm39.638-39.771l48.362-6.843l0,40.134l-48.362,0l0,-33.291Zm0,37.332l48.362,0l0,40.231l-48.362-6.903l0,-33.328Z" />
+                            </svg>
+                            Download for Windows
+                        </a>
+                        <a href="#" class="btn-os-download">
+                            <svg viewBox="0 0 384 512" width="24" height="24" fill="currentColor">
+                              <path d="M318.7 268.7c-.2-36.7 16.4-64.4 50-84.8-18.8-26.9-47.2-41.7-84.7-44.6-35.5-2.8-74.3 20.7-88.5 20.7-15 0-49.4-19.7-76.4-19.7C63.3 141.2 4 184.8 4 273.5q0 39.3 14.4 81.2c12.8 36.7 59 126.7 107.2 125.2 25.2-.6 43-17.9 75.8-17.9 31.8 0 48.3 17.9 76.4 17.9 48.6-.7 90.4-82.5 102.6-119.3-65.2-30.7-61.7-90-61.7-91.9zm-56.6-164.2c27.3-32.4 24.8-61.9 24-72.5-24.1 1.4-52 16.4-67.9 34.9-17.5 19.8-27.8 44.3-25.6 71.9 26.1 2 49.9-11.4 69.5-34.3z"></path>
+                            </svg>
+                            Download for Mac
+                        </a>
+                    </div>
+                </div>
+            
+                <div class="features-grid">
+                    <div class="feature-card">
+                        <div class="feature-icon-wrapper">
+                            <svg viewBox="0 0 24 24" width="24" height="24" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2v20M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"></path></svg>
+                        </div>
+                        <h3>0% Resource Overhead</h3>
+                        <p>Unlike traditional background applications, Steary is engineered from the ground up to have absolutely zero footprint on your RAM and GPU when idle. Keep your IDEs and games running at maximum FPS.</p>
+                    </div>
+                    <div class="feature-card">
+                        <div class="feature-icon-wrapper">
+                            <svg viewBox="0 0 24 24" width="24" height="24" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"></rect><path d="M7 11V7a5 5 0 0 1 10 0v4"></path></svg>
+                        </div>
+                        <h3>Instant Custom Activation</h3>
+                        <p>It remains completely dormant in your system tray, only waking up the exact millisecond you trigger it using your securely assigned custom hotkey.</p>
+                    </div>
+                </div>
+            
+                <div class="installation-steps">
+                    <h2>How to Download & Install</h2>
+                    
+                    <div class="step-row">
+                        <div class="step-number">1</div>
+                        <div class="step-content">
+                            <h4>Download the Installer</h4>
+                            <p>Click the button above to download the highly compressed setup file for Windows or macOS.</p>
+                        </div>
+                    </div>
+                    
+                    <div class="step-row">
+                        <div class="step-number">2</div>
+                        <div class="step-content">
+                            <h4>Run the Setup</h4>
+                            <p>Open the downloaded file and follow the 10-second standard installation wizard.</p>
+                        </div>
+                    </div>
+                    
+                    <div class="step-row">
+                        <div class="step-number">3</div>
+                        <div class="step-content">
+                            <h4>Choose Your Hotkey</h4>
+                            <p>Upon first launch, Steary will ask you to bind a custom keyboard shortcut (e.g., <code>Alt + Space</code> or <code>Cmd + /</code>).</p>
+                        </div>
+                    </div>
+                    
+                    <div class="step-row" style="margin-bottom:0;">
+                        <div class="step-number">4</div>
+                        <div class="step-content">
+                            <h4>Ready to Use</h4>
+                            <p>The setup is complete. Simply press your custom hotkey at any time to instantly bring Steary to the foreground.</p>
+                        </div>
+                    </div>
+                </div>
+                
+            </div>
+        </div>
+    </div>
+</body>
+</html>

@@ -1,0 +1,642 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Steary Admin - Dashboard</title>
+    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;700&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="preload" as="image" href="src/assets/bg.webp" type="image/webp">
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="admin.css">
+    <!-- Chart.js CDN for premium charts visual animations -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script>
+        (function() {
+            const theme = localStorage.getItem('steary.admin.theme') || 'light';
+            if (theme === 'dark') {
+                document.documentElement.classList.add('dark-theme');
+                document.addEventListener('DOMContentLoaded', () => {
+                    document.body.classList.add('dark-theme');
+                });
+            }
+        })();
+    </script>
+</head>
+<body>
+    <!-- Theme Initializer to prevent FOUC -->
+    <script>
+        if (localStorage.getItem('steary.admin.theme') === 'light') {
+            document.documentElement.classList.add('light-mode');
+            document.body.classList.add('light-mode');
+        }
+    </script>
+    <!-- Background Video / Image -->
+    <div class="app-bg-container">
+        <img class="app-bg-image" src="src/assets/bg.webp" alt="Website Background" loading="eager" decoding="async">
+        <div class="app-bg-overlay"></div>
+    </div>
+
+    <!-- Outer Dashboard Glass Wrapper -->
+    <div class="dashboard-wrapper glass-panel animate-scale-up">
+        
+        <!-- Sidebar Navigation -->
+        <aside class="dashboard-sidebar glass-panel">
+            <div class="dashboard-brand">
+                <svg class="logo-icon" viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="var(--accent)" stroke-width="3" stroke-linecap="round" stroke-linejoin="round">
+                    <rect x="3" y="11" width="18" height="11" rx="2" ry="2"></rect>
+                    <path d="M7 11V7a5 5 0 0 1 10 0v4"></path>
+                </svg>
+                <h1>Steary Admin</h1>
+            </div>
+
+            <div class="sidebar-menu-wrapper">
+                <span class="menu-label">MAIN</span>
+                <button class="dashboard-nav-btn active" data-tab="overview">
+                    <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="7" height="7"></rect><rect x="14" y="3" width="7" height="7"></rect><rect x="14" y="14" width="7" height="7"></rect><rect x="3" y="14" width="7" height="7"></rect></svg>
+                    Dashboard
+                </button>
+                <button class="dashboard-nav-btn" data-tab="livepreview">
+                    <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="3" width="20" height="14" rx="2" ry="2"></rect><line x1="8" y1="21" x2="16" y2="21"></line><line x1="12" y1="17" x2="12" y2="21"></line></svg>
+                    Live Preview
+                </button>
+
+                <span class="menu-label">CONTENT</span>
+                <button class="dashboard-nav-btn" data-tab="slider">
+                    <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="2" ry="2"></rect><line x1="3" y1="9" x2="21" y2="9"></line><line x1="9" y1="21" x2="9" y2="9"></line></svg>
+                    Hero Slider
+                </button>
+                <button class="dashboard-nav-btn" data-tab="toppicks">
+                    <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+                    Top Picks Analytics
+                </button>
+                <button class="dashboard-nav-btn" data-tab="aihub">
+                    <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"></circle><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"></path><path d="M2 12h20"></path></svg>
+                    AI Hub Management
+                </button>
+                <button class="dashboard-nav-btn" data-tab="devtools">
+                    <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2"><polyline points="16 18 22 12 16 6"></polyline><polyline points="8 6 2 12 8 18"></polyline></svg>
+                    Dev Tools Management
+                </button>
+                <button class="dashboard-nav-btn" data-tab="besttools">
+                    <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2"><path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z"/></svg>
+                    Best Tools Management
+                </button>
+                <button class="dashboard-nav-btn" data-tab="projects">
+                    <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 19a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h5l2 3h9a2 2 0 0 1 2 2z"></path></svg>
+                    Projects & Extensions
+                </button>
+
+                <span class="menu-label">SYSTEM</span>
+                <button class="dashboard-nav-btn" data-tab="categories">
+                    <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 9h16M4 15h16"></path></svg>
+                    Categories
+                </button>
+                <button class="dashboard-nav-btn" data-tab="settings">
+                    <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="3"></circle><path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 1 1-2.83 2.83l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-4 0v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 1 1-2.83-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1 0-4h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 1 1 2.83-2.83l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 4 0v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 1 1 2.83 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 0 4h-.09a1.65 1.65 0 0 0-1.51 1z"></path></svg>
+                    Settings
+                </button>
+            </div>
+
+            <button class="dashboard-nav-btn logout-btn" id="adminLogoutBtn">
+                <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4"></path><polyline points="16 17 21 12 16 7"></polyline><line x1="21" y1="12" x2="9" y2="12"></line></svg>
+                Logout Admin
+            </button>
+        </aside>
+
+        <!-- Right Main Panel -->
+        <main class="dashboard-main glass-panel">
+            
+            <!-- Top Bar Section -->
+            <header class="topbar-wrapper glass-panel">
+                <div class="topbar-search">
+                    <svg class="search-icon" viewBox="0 0 24 24" width="16" height="16" stroke="currentColor" stroke-width="2.5" fill="none" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line></svg>
+                    <input type="text" id="globalAdminSearch" placeholder="Search resources, projects, news...">
+                </div>
+
+                <div class="topbar-actions">
+                    <!-- Quick Actions -->
+                    <div class="quick-action-wrapper">
+                        <button class="btn btn-primary" id="quickActionBtn">
+                            <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" style="margin-right: 6px;"><line x1="12" y1="5" x2="12" y2="19"></line><line x1="5" y1="12" x2="19" y2="12"></line></svg>
+                            <span>Quick Actions</span>
+                        </button>
+                        <div class="quick-action-dropdown glass-panel hidden" id="quickActionMenu">
+                            <button data-target="slider">Add Banner</button>
+                            <button data-target="aihub">Add AI Tool</button>
+                            <button data-target="projects">Add Project</button>
+                            <button data-target="devtools">Add Dev Tool</button>
+                            <button data-target="besttools">Add Best Tool</button>
+                        </div>
+                    </div>
+
+                    <!-- System Notifications Bell -->
+                    <div class="admin-bell-wrapper">
+                        <button class="icon-btn" id="adminBellBtn" aria-label="Notifications" aria-expanded="false">
+                            <svg viewBox="0 0 24 24" width="20" height="20" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round"><path d="M18 8A6 6 0 0 0 6 8c0 7-3 9-3 9h18s-3-2-3-9"></path><path d="M13.73 21a2 2 0 0 1-3.46 0"></path></svg>
+                            <span class="bell-badge">3</span>
+                        </button>
+                        <div class="admin-bell-dropdown glass-panel hidden" id="adminBellDropdown">
+                            <div class="bell-dropdown-header">
+                                <strong>Notifications</strong>
+                                <button id="clearAdminNotifications">Clear</button>
+                            </div>
+                            <div class="bell-notification-list">
+                                <div class="bell-notification-item">
+                                    <span class="dot-indicator blue"></span>
+                                    <div>
+                                        <p>Supabase connection active</p>
+                                        <small>Just now</small>
+                                    </div>
+                                </div>
+                                <div class="bell-notification-item">
+                                    <span class="dot-indicator green"></span>
+                                    <div>
+                                        <p>Trailers synced successfully</p>
+                                        <small>15 mins ago</small>
+                                    </div>
+                                </div>
+                                <div class="bell-notification-item">
+                                    <span class="dot-indicator orange"></span>
+                                    <div>
+                                        <p>Daily stats refreshed</p>
+                                        <small>2 hours ago</small>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Theme Toggle -->
+                    <button class="icon-btn" id="adminThemeToggleBtn" aria-label="Toggle Light/Dark Theme" style="margin-left: 10px;">
+                        <!-- Sun Icon (visible in dark theme) -->
+                        <svg class="sun-icon hidden" viewBox="0 0 24 24" width="20" height="20" stroke="currentColor" stroke-width="2.5" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                            <circle cx="12" cy="12" r="5"></circle>
+                            <line x1="12" y1="1" x2="12" y2="3"></line>
+                            <line x1="12" y1="21" x2="12" y2="23"></line>
+                            <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+                            <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+                            <line x1="1" y1="12" x2="3" y2="12"></line>
+                            <line x1="21" y1="12" x2="23" y2="12"></line>
+                            <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+                            <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+                        </svg>
+                        <!-- Moon Icon (visible in light theme) -->
+                        <svg class="moon-icon" viewBox="0 0 24 24" width="20" height="20" stroke="currentColor" stroke-width="2.5" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
+                        </svg>
+                    </button>
+
+                    <div class="topbar-divider"></div>
+
+                    <!-- Admin profile details -->
+                    <div class="admin-profile-container">
+                        <div class="admin-profile-details">
+                            <span class="admin-name">Super Admin</span>
+                            <span class="admin-email-text" id="adminEmail">admin@steary.com</span>
+                        </div>
+                        <div class="avatar-container admin-avatar-container">
+                            <div class="admin-avatar-icon">
+                                <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                                    <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path>
+                                    <circle cx="12" cy="7" r="4"></circle>
+                                </svg>
+                            </div>
+                            <span class="status-dot online"></span>
+                        </div>
+                    </div>
+                </div>
+            </header>
+
+            <!-- Active CMS Panels -->
+            <div class="cms-panels-container">
+                
+                <!-- Overview Panel -->
+                <section id="panel-overview" class="dashboard-panel active">
+                    <div class="panel-intro-header">
+                        <h2>Platform Overview</h2>
+                        <p>Real-time statistics, site health, and database metrics.</p>
+                    </div>
+
+                    <!-- Premium Statistics Cards Grid -->
+                    <div class="dashboard-stats">
+                        <div class="stat-card glass-panel border-blue">
+                            <span class="stat-label">Top Trending</span>
+                            <span class="stat-value" id="statTopTrending" style="font-size: 16px; font-weight: 800; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; display: block; height: 38px; line-height: 38px;">...</span>
+                            <span class="stat-trend positive" id="statTopTrendingScore">Score: ...</span>
+                        </div>
+                        <div class="stat-card glass-panel border-purple">
+                            <span class="stat-label">Total AI Tools</span>
+                            <span class="stat-value" id="statSlides">30</span>
+                            <span class="stat-trend positive">▲ +3%</span>
+                        </div>
+                        <div class="stat-card glass-panel border-green">
+                            <span class="stat-label">Total Projects</span>
+                            <span class="stat-value" id="statProjects">...</span>
+                            <span class="stat-trend stable">Stable</span>
+                        </div>
+                        <div class="stat-card glass-panel border-orange">
+                            <span class="stat-label">Total Extensions</span>
+                            <span class="stat-value" id="statExtensions">...</span>
+                            <span class="stat-trend positive">▲ +1 new</span>
+                        </div>
+                        <div class="stat-card glass-panel border-pink">
+                            <span class="stat-label">Total Dev Tools</span>
+                            <span class="stat-value" id="statDevTools">...</span>
+                            <span class="stat-trend stable">Stable</span>
+                        </div>
+                        <div class="stat-card glass-panel border-cyan">
+                            <span class="stat-label">Total Categories</span>
+                            <span class="stat-value" id="statCategories">...</span>
+                            <span class="stat-trend positive">▲ Live</span>
+                        </div>
+                    </div>
+
+                    <!-- Widgets Grid Section -->
+                    <div class="dashboard-widgets-grid">
+                        
+                        <!-- Line Chart Widget -->
+                        <div class="widget-card glass-panel">
+                            <h3>Website Traffic (Views & Visitors)</h3>
+                            <div class="chart-canvas-wrapper">
+                                <canvas id="trafficChart"></canvas>
+                            </div>
+                        </div>
+
+                        <!-- Doughnut Chart Widget -->
+                        <div class="widget-card glass-panel">
+                            <h3>Popular Categories</h3>
+                            <div class="chart-canvas-wrapper-small">
+                                <canvas id="categoriesChart"></canvas>
+                            </div>
+                        </div>
+
+                        <!-- Recent Activity Logs Feed -->
+                        <div class="widget-card glass-panel">
+                            <h3>Recent Activity</h3>
+                            <div class="activity-feed-wrapper" id="activityFeedList">
+                                <!-- Populated dynamically -->
+                            </div>
+                        </div>
+
+                        <!-- Quick Actions Grid -->
+                        <div class="widget-card glass-panel">
+                            <h3>Quick Actions</h3>
+                            <div class="quick-actions-grid">
+                                <button class="quick-act-btn border-orange" data-target="slider">
+                                    <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="2" ry="2"></rect><line x1="3" y1="9" x2="21" y2="9"></line><line x1="9" y1="21" x2="9" y2="9"></line></svg>
+                                    <span>Add Banner</span>
+                                </button>
+                                <button class="quick-act-btn border-blue" data-target="devtools">
+                                    <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2"><polyline points="16 18 22 12 16 6"></polyline><polyline points="8 6 2 12 8 18"></polyline></svg>
+                                    <span>Add Dev Tool</span>
+                                </button>
+                                <button class="quick-act-btn border-purple" data-target="aihub">
+                                    <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"></circle><line x1="12" y1="8" x2="12" y2="16"></line><line x1="8" y1="12" x2="16" y2="12"></line></svg>
+                                    <span>Add AI Tool</span>
+                                </button>
+                                <button class="quick-act-btn border-green" data-target="projects">
+                                    <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 19a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h5l2 3h9a2 2 0 0 1 2 2z"></path><line x1="12" y1="11" x2="12" y2="17"></line><line x1="9" y1="14" x2="15" y2="14"></line></svg>
+                                    <span>Add Project</span>
+                                </button>
+                                <button class="quick-act-btn border-orange" data-target="besttools">
+                                    <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2"><path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z"/></svg>
+                                    <span>Add Best Tool</span>
+                                </button>
+                            </div>
+                        </div>
+
+                    </div>
+                </section>
+
+                <!-- Live Preview Panel -->
+                <section id="panel-livepreview" class="dashboard-panel hidden">
+                    <div class="panel-intro-header">
+                        <h2>Live Website Preview</h2>
+                        <p>Interactive real-time preview of the Steary streaming platform. Hit refresh to update after changes.</p>
+                    </div>
+                    <div class="widget-card glass-panel" style="width: 100%; height: calc(100vh - 280px); display: flex; flex-direction: column; gap: 10px;">
+                        <div style="display: flex; justify-content: space-between; align-items: center; padding-bottom: 5px;">
+                            <span class="status-indicator online">Interactive Preview Mode</span>
+                            <button class="btn btn-secondary" id="refreshPreviewBtn" style="padding: 6px 12px; font-size: 12px; display: flex; align-items: center; gap: 6px;">
+                                <svg viewBox="0 0 24 24" width="14" height="14" stroke="currentColor" stroke-width="2.5" fill="none" stroke-linecap="round" stroke-linejoin="round"><path d="M21.5 2v6h-6M21.34 15.57a10 10 0 1 1-.57-8.38l5.67-5.67"/></svg>
+                                Refresh Preview
+                            </button>
+                        </div>
+                        <iframe id="livePreviewIframe" src="index.html" style="width: 100%; height: 100%; border: 1px solid rgba(255,255,255,0.1); border-radius: 12px; background: #0b0b0f;" title="Live Preview"></iframe>
+                    </div>
+                </section>
+
+                <!-- Hero Slider Management Panel -->
+                <section id="panel-slider" class="dashboard-panel hidden">
+                    <div class="panel-intro-header">
+                        <h2>Hero Slider Management</h2>
+                        <p>Manage the large header carousel banners shown at the top of the homepage.</p>
+                    </div>
+                    <div class="cms-two-col">
+                        <form class="cms-form" id="sliderCmsForm">
+                            <h3 id="sliderFormTitle">Create Slide Banner</h3>
+                            <div class="form-group">
+                                <label for="slideTitleInput">Slide Title</label>
+                                <input type="text" class="cms-input" id="slideTitleInput" required placeholder="e.g. OpenAI GPT-5 Release">
+                            </div>
+                            <div class="form-group">
+                                <label for="slideSynopsisInput">Synopsis / Subtitle</label>
+                                <textarea class="cms-input" id="slideSynopsisInput" rows="2" required placeholder="Brief synopsis of the content..."></textarea>
+                            </div>
+                            <div class="form-group">
+                                <label for="slideBadgeInput">Badge Text</label>
+                                <input type="text" class="cms-input" id="slideBadgeInput" placeholder="e.g. 🔥 Now Trending">
+                            </div>
+                            <div class="form-group">
+                                <label for="slideGenresInput">Genres / Tags (comma separated)</label>
+                                <input type="text" class="cms-input" id="slideGenresInput" placeholder="e.g. AI, Tech, coding">
+                            </div>
+                            <div class="form-group">
+                                <label for="slideImageInput">Background Image URL</label>
+                                <input type="text" class="cms-input" id="slideImageInput" required placeholder="e.g. src/assets/project1.webp">
+                            </div>
+                            <div class="form-group">
+                                <label for="slideVideoUrlInput">Watch Video URL</label>
+                                <input type="text" class="cms-input" id="slideVideoUrlInput" placeholder="https://www.youtube.com/embed/...">
+                            </div>
+                            <div class="form-group">
+                                <label for="slideWebsiteUrlInput">View Website URL</label>
+                                <input type="text" class="cms-input" id="slideWebsiteUrlInput" placeholder="https://...">
+                            </div>
+                            <button type="submit" class="btn btn-primary btn-block">Save Banner Slide</button>
+                        </form>
+
+                        <div class="preview-box glass-panel">
+                            <h3>Active Slide Banners</h3>
+                            <input type="text" class="cms-input" id="sliderSearch" placeholder="Search slides...">
+                            <div class="cms-list-editor" id="adminSliderList">
+                                <p>Loading banners...</p>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- Top Picks Analytics Panel -->
+                <section id="panel-toppicks" class="dashboard-panel hidden">
+                    <div class="panel-intro-header">
+                        <h2>Top Picks Analytics</h2>
+                        <p>Track real-time popularity rankings across all platform resources based on views, clicks, launches, and engagement.</p>
+                    </div>
+                    
+                    <div class="glass-panel" style="overflow-x: auto; margin-top: 20px; border-radius: 12px; padding: 0;">
+                        <table class="analytics-table" style="width: 100%; border-collapse: collapse; text-align: left; font-size: 14px; min-width: 600px;">
+                            <thead>
+                                <tr style="border-bottom: 1px solid var(--border-color); background: rgba(0,0,0,0.2);">
+                                    <th style="padding: 12px 16px; font-weight: 600; color: var(--text-secondary);">Rank</th>
+                                    <th style="padding: 12px 16px; font-weight: 600; color: var(--text-secondary);">Name</th>
+                                    <th style="padding: 12px 16px; font-weight: 600; color: var(--text-secondary);">Content Type</th>
+                                    <th style="padding: 12px 16px; font-weight: 600; color: var(--text-secondary); text-align: right;">Views</th>
+                                    <th style="padding: 12px 16px; font-weight: 600; color: var(--text-secondary); text-align: right;">Clicks</th>
+                                    <th style="padding: 12px 16px; font-weight: 600; color: var(--text-secondary); text-align: right;">Launches</th>
+                                    <th style="padding: 12px 16px; font-weight: 600; color: var(--text-secondary); text-align: right;">Engagement</th>
+                                    <th style="padding: 12px 16px; font-weight: 600; color: var(--text-secondary); text-align: right;">Popularity Score</th>
+                                </tr>
+                            </thead>
+                            <tbody id="adminTopPicksTableBody">
+                                <!-- Populated dynamically -->
+                            </tbody>
+                        </table>
+                    </div>
+                </section>
+
+                <!-- AI Hub Management Panel -->
+                <section id="panel-aihub" class="dashboard-panel hidden">
+                    <div class="panel-intro-header">
+                        <h2>AI Hub Management</h2>
+                        <p>Edit AI tools, creative studios, and automation brand cards.</p>
+                    </div>
+                    <div class="cms-two-col">
+                        <form class="cms-form" id="aiHubCmsForm">
+                            <h3>Register AI Card</h3>
+                            <div class="form-group">
+                                <label for="aiNameInput">AI Name</label>
+                                <input type="text" class="cms-input" id="aiNameInput" required placeholder="e.g. Midjourney">
+                            </div>
+                            <div class="form-group">
+                                <label for="aiDescInput">Capability Summary</label>
+                                <textarea class="cms-input" id="aiDescInput" rows="3" required placeholder="Enter description..."></textarea>
+                            </div>
+                            <div class="form-group">
+                                <label for="aiLogoInput">Logo Image URL</label>
+                                <input type="text" class="cms-input" id="aiLogoInput" placeholder="src/assets/ai logo/midjourney.png">
+                            </div>
+                            <div class="form-group">
+                                <label for="aiLinkInput">Official URL</label>
+                                <input type="text" class="cms-input" id="aiLinkInput" placeholder="https://...">
+                            </div>
+                            <button type="submit" class="btn btn-primary btn-block">Register AI Card</button>
+                        </form>
+
+                        <div class="preview-box glass-panel">
+                            <h3>Active AI Tools</h3>
+                            <input type="text" class="cms-input" id="aiHubSearch" placeholder="Search AI tools...">
+                            <div class="cms-list-editor" id="adminAiHubList">
+                                <p>Loading AI tools...</p>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- Dev Tools Management Panel -->
+                <section id="panel-devtools" class="dashboard-panel hidden">
+                    <div class="panel-intro-header">
+                        <h2>Dev Tools Management</h2>
+                        <p>Manage developer code libraries, command sets, and developer cards.</p>
+                    </div>
+                    <div class="cms-two-col">
+                        <form class="cms-form" id="devtoolsCmsForm">
+                            <h3>Register Dev Tool</h3>
+                            <div class="form-group">
+                                <label for="toolNameInput">Tool Name</label>
+                                <input type="text" class="cms-input" id="toolNameInput" required placeholder="e.g. GitHub Copilot">
+                            </div>
+                            <div class="form-group">
+                                <label for="toolDescInput">Description / Purpose</label>
+                                <textarea class="cms-input" id="toolDescInput" rows="3" required placeholder="Enter description..."></textarea>
+                            </div>
+                            <div class="form-group">
+                                <label for="toolIconInput">Icon Class / SVG Path</label>
+                                <input type="text" class="cms-input" id="toolIconInput" placeholder="SVG path or icon class (e.g. prompt, terminal, settings)">
+                            </div>
+                            <div class="form-group">
+                                <label for="toolLinkInput">Tool Website Link</label>
+                                <input type="url" class="cms-input" id="toolLinkInput" placeholder="e.g. https://github.com">
+                            </div>
+                            <button type="submit" class="btn btn-primary btn-block">Register Tool</button>
+                        </form>
+
+                        <div class="preview-box glass-panel">
+                            <h3>Active Dev Tools</h3>
+                            <input type="text" class="cms-input" id="devtoolsSearch" placeholder="Search dev tools...">
+                            <div class="cms-list-editor" id="adminDevtoolsList">
+                                <p>Loading dev tools...</p>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- Best Tools Management Panel -->
+                <section id="panel-besttools" class="dashboard-panel hidden">
+                    <div class="panel-intro-header">
+                        <h2>Best Tools Management</h2>
+                        <p>Manage the homepage quick-access developer tools (GitHub, VS Code, Figma, etc.).</p>
+                    </div>
+                    <div class="cms-two-col">
+                        <form class="cms-form" id="bestToolsCmsForm">
+                            <h3>Register Best Tool</h3>
+                            <div class="form-group">
+                                <label for="bestToolNameInput">Tool Name</label>
+                                <input type="text" class="cms-input" id="bestToolNameInput" required placeholder="e.g. GitHub">
+                            </div>
+                            <div class="form-group">
+                                <label for="bestToolDescInput">Description / Metadata</label>
+                                <input type="text" class="cms-input" id="bestToolDescInput" required placeholder="e.g. Code hosting & collaboration">
+                            </div>
+                            <div class="form-group">
+                                <label for="bestToolUrlInput">Target URL</label>
+                                <input type="text" class="cms-input" id="bestToolUrlInput" required placeholder="https://github.com">
+                            </div>
+                            <div class="form-group">
+                                <label for="bestToolIconInput">Icon Type (github, vscode, figma, vercel, netlify, supabase, or default)</label>
+                                <input type="text" class="cms-input" id="bestToolIconInput" placeholder="e.g. github">
+                            </div>
+                            <button type="submit" class="btn btn-primary btn-block">Register Best Tool</button>
+                        </form>
+
+                        <div class="preview-box glass-panel">
+                            <h3>Active Best Tools</h3>
+                            <input type="text" class="cms-input" id="bestToolsSearch" placeholder="Search best tools...">
+                            <div class="cms-list-editor" id="adminBestToolsList">
+                                <p>Loading best tools...</p>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- Projects & Extensions Management Panel -->
+                <section id="panel-projects" class="dashboard-panel hidden">
+                    <div class="panel-intro-header">
+                        <h2>Projects & Extensions Management</h2>
+                        <p>Manage core software application cards and browser extensions inside the database.</p>
+                    </div>
+                    <div class="cms-two-col">
+                        <form class="cms-form" id="projectsCmsForm">
+                            <h3 id="projectsFormTitle">Publish Card</h3>
+                            <div class="form-group">
+                                <label for="projNameInput">Name</label>
+                                <input type="text" class="cms-input" id="projNameInput" required placeholder="e.g. ResumeSuit">
+                            </div>
+                            <div class="form-group">
+                                <label for="projDescInput">Description</label>
+                                <textarea class="cms-input" id="projDescInput" rows="3" required placeholder="Describe what the application/extension does..."></textarea>
+                            </div>
+                            <div class="form-group">
+                                <label for="projUrlInput">Target URL / Install Link</label>
+                                <input type="text" class="cms-input" id="projUrlInput" required placeholder="https://...">
+                            </div>
+                            <div class="form-group">
+                                <label for="projImageInput">Poster Image URL</label>
+                                <input type="text" class="cms-input" id="projImageInput" placeholder="src/assets/project1.webp">
+                            </div>
+                            <div class="form-group checkbox-group" style="display: flex; align-items: center; gap: 8px; margin-top: 10px;">
+                                <input type="checkbox" id="projIsExtension" style="width: 16px; height: 16px; accent-color: var(--accent);">
+                                <label for="projIsExtension" style="margin: 0; font-size: 13px; color: rgba(255,255,255,0.85); cursor: pointer;">Register as Chrome Extension</label>
+                            </div>
+                            <div class="form-group preview-section" style="margin-top: 15px;">
+                                <label>Live Preview:</label>
+                                <div id="projectsLivePreview" class="live-preview-box" style="margin-top: 10px; display: flex; justify-content: center; padding: 10px;">
+                                    <div class="cms-empty-state" style="padding: 20px;">Fill the form to see preview</div>
+                                </div>
+                            </div>
+                            <button type="submit" class="btn btn-primary btn-block" style="margin-top: 15px;">Publish Project</button>
+                        </form>
+
+                        <div class="preview-box glass-panel">
+                            <h3>Active Cards List</h3>
+                            <input type="text" class="cms-input" id="projectSearch" placeholder="Search cards by name...">
+                            <div class="cms-list-editor" id="adminProjectsList">
+                                <p>Loading cards...</p>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- Categories Panel -->
+                <section id="panel-categories" class="dashboard-panel hidden">
+                    <div class="panel-intro-header">
+                        <h2>Category Directory</h2>
+                        <p>Configure tags, layout genres, and category filters.</p>
+                    </div>
+                    <div class="cms-two-col">
+                        <form class="cms-form" id="categoryForm">
+                            <h3>Create New Category</h3>
+                            <div class="form-group">
+                                <label for="catNameInput">Category Name</label>
+                                <input type="text" class="cms-input" id="catNameInput" required placeholder="e.g. Generative Design">
+                            </div>
+                            <div class="form-group">
+                                <label for="catSlugInput">Slug</label>
+                                <input type="text" class="cms-input" id="catSlugInput" required placeholder="e.g. generative-design">
+                            </div>
+                            <button type="submit" class="btn btn-primary btn-block">Add Category</button>
+                        </form>
+
+                        <div class="preview-box glass-panel">
+                            <h3>Existing Categories</h3>
+                            <div class="cms-list-editor" id="adminCategoriesList">
+                                <p>Loading categories...</p>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+
+
+                <!-- Settings / Footer Panel -->
+                <section id="panel-settings" class="dashboard-panel hidden">
+                    <div class="panel-intro-header">
+                        <h2>Global Website Settings</h2>
+                        <p>Configure social links, copyright branding, navbar titles, and fallback variables.</p>
+                    </div>
+                    <form class="cms-form" id="settingsForm">
+                        <div class="form-group">
+                            <label for="settingsCopyright">Copyright Text</label>
+                            <input type="text" class="cms-input" id="settingsCopyright" required placeholder="© 2026 Steary Inc. All rights reserved.">
+                        </div>
+                        <div class="form-group">
+                            <label for="settingsTwitter">X (Twitter) URL</label>
+                            <input type="text" class="cms-input" id="settingsTwitter" placeholder="https://x.com/...">
+                        </div>
+                        <div class="form-group">
+                            <label for="settingsDiscord">Discord Invite Link</label>
+                            <input type="text" class="cms-input" id="settingsDiscord" placeholder="https://discord.gg/...">
+                        </div>
+                        <div class="form-group">
+                            <label for="settingsInstagram">Instagram URL</label>
+                            <input type="text" class="cms-input" id="settingsInstagram" placeholder="https://instagram.com/...">
+                        </div>
+                        <div class="form-group">
+                            <label for="settingsYoutube">YouTube Channel Link</label>
+                            <input type="text" class="cms-input" id="settingsYoutube" placeholder="https://youtube.com/...">
+                        </div>
+                        <div class="cms-toolbar">
+                            <button type="submit" class="btn btn-primary">Save Settings</button>
+                            <button type="button" class="btn btn-secondary" id="exportBackupBtn">Export Backup JSON</button>
+                        </div>
+                    </form>
+                </section>
+
+            </div>
+        </main>
+    </div>
+
+    <!-- Supabase CDN Client Library -->
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+    <script src="admin.min.js"></script>
+</body>
+</html>

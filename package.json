@@ -1,0 +1,14 @@
+{
+  "dependencies": {
+    "@supabase/supabase-js": "^2.107.0",
+    "express": "^5.2.1",
+    "puppeteer": "^25.1.0",
+    "run-deepseek-cli": "^0.1.1"
+  },
+  "devDependencies": {
+    "javascript-obfuscator": "^4.1.0"
+  },
+  "scripts": {
+    "build": "npx javascript-obfuscator app.js --output app.min.js --compact true && npx javascript-obfuscator admin.js --output admin.min.js --compact true"
+  }
+}

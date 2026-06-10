@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact Support - Steary</title>
+    <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='white' stroke-width='3.5' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M6 6l6 6-6 6'/%3E%3Cline x1='14' y1='18' x2='20' y2='18'/%3E%3C/svg%3E">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="preload" as="image" href="src/assets/bg.webp" type="image/webp">
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body class="light-mode">
+    <script>
+        (function() {
+            try {
+                const prefs = localStorage.getItem('steary.profile.preferences');
+                if (prefs && JSON.parse(prefs).lightMode === false) document.body.classList.remove('light-mode');
+            } catch (e) {}
+        })();
+    </script>
+    <div class="app-bg-container">
+        <img class="app-bg-image" src="src/assets/bg.webp" alt="Website Background" loading="eager" decoding="async">
+        <div class="app-bg-overlay"></div>
+    </div>
+
+    <div class="app-layout-wrapper" id="viewport">
+        <div class="app-container top-container glass-panel animate-scale-up">
+            <nav class="navbar glass-panel animate-fade-in" style="display:flex; justify-content:space-between;">
+                <div class="navbar-left">
+                    <a href="index.html" class="navbar-brand" style="text-decoration:none; color:inherit;">
+                        <svg class="logo-icon" viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round">
+                            <path class="logo-chevron" d="M6 6l6 6-6 6" />
+                            <line class="logo-cursor" x1="14" y1="18" x2="20" y2="18" />
+                        </svg>
+                        <span>Steary</span>
+                    </a>
+                </div>
+                <div class="navbar-right">
+                    <a href="index.html" class="btn btn-secondary" style="text-decoration:none;">Return Home</a>
+                </div>
+            </nav>
+
+            <div class="legal-page-wrapper">
+                <div class="legal-header animate-fade-in">
+                    <h1>Contact Support</h1>
+                    <p>We are here to help. Get in touch with our team.</p>
+                </div>
+                <div class="prose-panel glass-panel animate-fade-in" style="animation-delay: 0.1s;">
+                    <div class="contact-wrapper">
+                        <svg viewBox="0 0 24 24" width="48" height="48" stroke="currentColor" stroke-width="1.5" fill="none" stroke-linecap="round" stroke-linejoin="round" style="color:var(--accent); margin-bottom:20px;">
+                            <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path>
+                            <polyline points="22,6 12,13 2,6"></polyline>
+                        </svg>
+                        <h2>Reach Out to Us</h2>
+                        <p>If you have any questions, bug reports, or feature requests regarding Steary, please email us directly. We aim to respond within 24-48 hours.</p>
+                        
+                        <div class="contact-email-box">
+                            <a href="mailto:dgod9882@gmail.com">dgod9882@gmail.com</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

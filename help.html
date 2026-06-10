@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Help Center - Steary</title>
+    <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='white' stroke-width='3.5' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M6 6l6 6-6 6'/%3E%3Cline x1='14' y1='18' x2='20' y2='18'/%3E%3C/svg%3E">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="preload" as="image" href="src/assets/bg.webp" type="image/webp">
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body class="light-mode">
+    <script>
+        (function() {
+            try {
+                const prefs = localStorage.getItem('steary.profile.preferences');
+                if (prefs && JSON.parse(prefs).lightMode === false) document.body.classList.remove('light-mode');
+            } catch (e) {}
+        })();
+    </script>
+    <div class="app-bg-container">
+        <img class="app-bg-image" src="src/assets/bg.webp" alt="Website Background" loading="eager" decoding="async">
+        <div class="app-bg-overlay"></div>
+    </div>
+
+    <div class="app-layout-wrapper" id="viewport">
+        <div class="app-container top-container glass-panel animate-scale-up">
+            <nav class="navbar glass-panel animate-fade-in" style="display:flex; justify-content:space-between;">
+                <div class="navbar-left">
+                    <a href="index.html" class="navbar-brand" style="text-decoration:none; color:inherit;">
+                        <svg class="logo-icon" viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round">
+                            <path class="logo-chevron" d="M6 6l6 6-6 6" />
+                            <line class="logo-cursor" x1="14" y1="18" x2="20" y2="18" />
+                        </svg>
+                        <span>Steary</span>
+                    </a>
+                </div>
+                <div class="navbar-right">
+                    <a href="index.html" class="btn btn-secondary" style="text-decoration:none;">Return Home</a>
+                </div>
+            </nav>
+
+            <div class="legal-page-wrapper">
+                <div class="legal-header animate-fade-in">
+                    <h1>Help Center & FAQ</h1>
+                    <p>Find answers to common questions about Steary.</p>
+                </div>
+                <div class="prose-panel glass-panel animate-fade-in" style="animation-delay: 0.1s;">
+                    <h2>How do I change the theme?</h2>
+                    <p>Steary supports both Light and Dark modes. Simply click the Sun/Moon icon in the top right navigation bar to toggle between themes. Your preference will be saved locally on your device.</p>
+
+                    <h2>How do I open projects?</h2>
+                    <p>Navigate to the "Projects", "Dev Tools", or "AI Hub" tabs and click on any card. This will open an interactive preview within our custom high-performance iframe wrapper, without leaving the site.</p>
+
+                    <h2>Why are my settings lost when I change devices?</h2>
+                    <p>Currently, Steary uses local browser storage to keep things fast and private. This means your profile settings and theme preferences are specific to the browser and device you are currently using.</p>
+
+                    <h2>How can I access the Admin Dashboard?</h2>
+                    <p>The Admin dashboard requires a valid authorization key. If you are a site administrator, navigate to <code>/admin.html</code> and enter your credentials.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
